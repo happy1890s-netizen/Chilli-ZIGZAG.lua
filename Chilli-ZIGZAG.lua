@@ -1,25 +1,28 @@
 --========================================================
 -- CHILLI HUB THAI - ZIGZAG
 -- DIRECT SOURCE / ONE BLOCK / ANTI-FLICKER / LOW-LAG
+-- LATEST TRANSLATIONS UPDATE
 --
 -- ✅ Loader + Translator ก้อนเดียว
--- ✅ โหลด Chilli ต้นฉบับโดยตรง
--- ✅ ไม่โหลด Kheroro Translator ซ้อน
--- ✅ คำแปลล่าสุดคงไว้
+-- ✅ Direct Chilli Source
+-- ✅ ไม่มี Kheroro Translator ซ้อน
+-- ✅ Single ZIGZAG Translator
+-- ✅ Anti-Flicker
+-- ✅ ไม่มี RenderStepped Translation Loop
+-- ✅ ไม่มี Permanent Full Scan
 -- ✅ Butterfly Bloom / Wisp / Essence
--- ✅ Scrambled / Lab
--- ✅ Placement / Priority
--- ✅ Dropdown / Popup / Dynamic Text
--- ✅ Anti Guard Floating
--- ✅ ไม่มี RenderStepped Translator
--- ✅ ไม่มี Full Scan Loop ถาวร
+-- ✅ Scrambled / Lab / Mech
+-- ✅ Sell Pets / Favorite / Fuse
+-- ✅ Auto Progression / Server
+-- ✅ ESP / Character / Combat
+-- ✅ Config / Interface
+-- ✅ Predictor / Hit System
+-- ✅ Steal Panel
 --========================================================
 
 
 --========================================================
 -- 0. SESSION STATE
--- ถ้ารัน ZIGZAG ซ้ำ จะตัด watcher เก่าของ ZIGZAG ก่อน
--- แต่ไม่สร้าง Chilli ซ้ำถ้ามีอยู่แล้ว
 --========================================================
 
 local ENV =
@@ -94,9 +97,6 @@ local PlayerGui =
 
 --========================================================
 -- 2. DIRECT CHILLI SOURCE
---
--- สำคัญ:
--- ไม่ใช้ kheroro.vercel.app ตรงนี้อีก
 --========================================================
 
 local SOURCE_URL =
@@ -109,7 +109,9 @@ local SOURCE_URL =
 
 local TRANSLATIONS = {
 
-    --================ MAIN / GENERAL =================
+    --====================================================
+    -- MAIN / GENERAL
+    --====================================================
 
     ["Chilli Hub"] =
         "Chilli Hub 🇹🇭 • ZIGZAG",
@@ -264,8 +266,57 @@ local TRANSLATIONS = {
     ["Areas"] =
         "พื้นที่",
 
+    ["Sell"] =
+        "ขาย",
 
-    --================ RARITY =================
+    ["Favorite"] =
+        "ถูกใจ",
+
+    ["Unfavorite"] =
+        "เลิกถูกใจ",
+
+    ["Hop"] =
+        "ย้าย",
+
+    ["Join"] =
+        "เข้า",
+
+    ["Copy"] =
+        "คัดลอก",
+
+    ["Rejoin"] =
+        "เข้าใหม่",
+
+    ["Add"] =
+        "เพิ่ม",
+
+    ["Reset"] =
+        "รีเซ็ต",
+
+    ["Turn Off"] =
+        "ปิดทั้งหมด",
+
+    ["Save"] =
+        "บันทึก",
+
+    ["Import"] =
+        "นำเข้า",
+
+    ["Steal"] =
+        "ขโมย",
+
+
+    --====================================================
+    -- STEAL PANEL - NEW
+    --====================================================
+
+    ["Steal Panel"] =
+        "แผงขโมย",
+
+
+    --====================================================
+    -- RARITY
+    --====================================================
 
     ["Basic"] =
         "พื้นฐาน",
@@ -328,7 +379,9 @@ local TRANSLATIONS = {
         "เรนโบว์",
 
 
-    --================ SYSTEM / PLAYER =================
+    --====================================================
+    -- SYSTEM / PLAYER
+    --====================================================
 
     ["Movement"] =
         "การเคลื่อนที่",
@@ -375,6 +428,9 @@ local TRANSLATIONS = {
     ["Invisibility"] =
         "ล่องหน",
 
+    ["Makes you invisible to other players"] =
+        "ทำให้ผู้เล่นอื่นมองไม่เห็นคุณ",
+
     ["No Animations"] =
         "ปิดแอนิเมชัน",
 
@@ -408,8 +464,63 @@ local TRANSLATIONS = {
     ["Jump Power"] =
         "พลังการกระโดด",
 
+    ["Traps from other players cannot catch you"] =
+        "กับดักของผู้เล่นอื่นจะจับคุณไม่ได้",
 
-    --================ PERFORMANCE =================
+    ["Instant Prompts"] =
+        "โต้ตอบทันที",
+
+    ["Combat"] =
+        "การต่อสู้",
+
+
+    --====================================================
+    -- COMBAT / HIT
+    --====================================================
+
+    ["Auto Hit Nearest Player"] =
+        "ออโต้ตีผู้เล่นที่ใกล้สุด",
+
+    ["Auto Hit Egg Holders"] =
+        "ออโต้ตีผู้เล่นที่ถือไข่",
+
+    ["Auto Hit Specific Player"] =
+        "ออโต้ตีผู้เล่นที่เลือก",
+
+    ["Hit Player"] =
+        "เลือกผู้เล่นที่จะตี",
+
+    ["Hit Aura"] =
+        "ตีรอบตัว",
+
+    ["Hit Tween Speed"] =
+        "ความเร็ววาร์ปตอนตี",
+
+    ["Hit Max Speed"] =
+        "ความเร็วสูงสุดตอนตี",
+
+    ["Hit Lead"] =
+        "ระยะนำเป้าหมาย",
+
+    ["Stand further ahead of the target (+) or closer to them (-)"] =
+        "ยืนล้ำหน้าเป้าหมาย (+) หรือเข้าใกล้เป้าหมาย (-)",
+
+    ["Hit Sweep"] =
+        "ระยะกวาดตอนตี",
+
+    ["How far you move back and forth in front of the target"] =
+        "ระยะที่เคลื่อนที่ไป-กลับด้านหน้าเป้าหมาย",
+
+    ["Add/Remove Hits On Quick Bar 2"] =
+        "เพิ่ม/ลบเมนูตีในแถบด่วน 2",
+
+    ["Pin or unpin the hit toggles on Quick Bar 2"] =
+        "เพิ่มหรือลบสวิตช์ตีออกจากแถบด่วน 2",
+
+
+    --====================================================
+    -- PERFORMANCE
+    --====================================================
 
     ["Performance"] =
         "ประสิทธิภาพ",
@@ -466,7 +577,9 @@ local TRANSLATIONS = {
         "ตัวปรับประสิทธิภาพ",
 
 
-    --================ SERVER =================
+    --====================================================
+    -- SERVER
+    --====================================================
 
     ["Server Hop"] =
         "ย้ายเซิร์ฟเวอร์",
@@ -478,6 +591,9 @@ local TRANSLATIONS = {
         "ออโต้ย้ายเซิร์ฟเวอร์",
 
     ["Hop Mode"] =
+        "โหมดย้ายเซิร์ฟเวอร์",
+
+    ["Server Hop Mode"] =
         "โหมดย้ายเซิร์ฟเวอร์",
 
     ["Most Players"] =
@@ -546,8 +662,28 @@ local TRANSLATIONS = {
     ["Wait after the script loads before the first hop"] =
         "รอหลังสคริปต์โหลดก่อนย้ายเซิร์ฟครั้งแรก",
 
+    ["Auto Load Script"] =
+        "โหลดสคริปต์อัตโนมัติ",
 
-    --================ STEAL =================
+    ["Job ID"] =
+        "Job ID",
+
+    ["Paste a server Job ID..."] =
+        "วาง Job ID ของเซิร์ฟเวอร์...",
+
+    ["Join Job ID"] =
+        "เข้าเซิร์ฟเวอร์ตาม Job ID",
+
+    ["Copy Current Job ID"] =
+        "คัดลอก Job ID ปัจจุบัน",
+
+    ["Auto Rejoin When Disconnect"] =
+        "เข้าเซิร์ฟเวอร์ใหม่อัตโนมัติเมื่อหลุด",
+
+
+    --====================================================
+    -- STEAL
+    --====================================================
 
     ["Auto Steal"] =
         "ออโต้ขโมย",
@@ -610,7 +746,9 @@ local TRANSLATIONS = {
         "หลีกเลี่ยง Rift",
 
 
-    --================ PLACE =================
+    --====================================================
+    -- PLACE
+    --====================================================
 
     ["Auto Place Egg"] =
         "ออโต้วางไข่",
@@ -661,7 +799,9 @@ local TRANSLATIONS = {
         "เฉพาะกลางคืน",
 
 
-    --================ HATCH / EQUIP =================
+    --====================================================
+    -- HATCH / EQUIP
+    --====================================================
 
     ["Auto Hatch"] =
         "ออโต้ฟักไข่",
@@ -715,7 +855,9 @@ local TRANSLATIONS = {
         "เปลี่ยนไปใช้สัตว์เลี้ยงที่ดีกว่าทันทีเมื่อมี",
 
 
-    --================ TREADMILL =================
+    --====================================================
+    -- TREADMILL
+    --====================================================
 
     ["Auto Treadmill"] =
         "ออโต้ลู่วิ่ง",
@@ -735,8 +877,13 @@ local TRANSLATIONS = {
     ["Stay On Treadmill"] =
         "อยู่บนลู่วิ่งตลอดเวลา",
 
+    ["Automatically upgrade treadmill when money is available"] =
+        "อัปเกรดลู่วิ่งอัตโนมัติเมื่อมีเงินพอ",
 
-    --================ SELL =================
+
+    --====================================================
+    -- SELL
+    --====================================================
 
     ["Auto Sell"] =
         "ออโต้ขาย",
@@ -771,8 +918,46 @@ local TRANSLATIONS = {
     ["Never Sell Equipped"] =
         "ห้ามขายตัวที่กำลังใช้งาน",
 
+    ["Sell Pet Rule"] =
+        "กฎการขายสัตว์เลี้ยง",
 
-    --================ LAB EGG =================
+    ["Which checks must pass to sell"] =
+        "เลือกเงื่อนไขที่ต้องผ่านก่อนขาย",
+
+    ["Rarity Only"] =
+        "เฉพาะความหายาก",
+
+    ["Value Only"] =
+        "เฉพาะมูลค่า",
+
+    ["Rarity Or Value"] =
+        "ความหายากหรือมูลค่า",
+
+    ["Pet Max Rarity"] =
+        "ความหายากสูงสุดของสัตว์เลี้ยง",
+
+    ["Sell pets at or below this rarity"] =
+        "ขายสัตว์เลี้ยงระดับนี้หรือต่ำกว่า",
+
+    ["Sell pets worth less than this (0 = off)"] =
+        "ขายสัตว์เลี้ยงที่มูลค่าต่ำกว่านี้ (0 = ปิด)",
+
+    ["Keep Mutated Pets"] =
+        "เก็บสัตว์เลี้ยงกลายพันธุ์ไว้",
+
+    ["Never sell mutated pets"] =
+        "ห้ามขายสัตว์เลี้ยงที่กลายพันธุ์",
+
+    ["Blacklist Sell Pets"] =
+        "สัตว์เลี้ยงห้ามขาย",
+
+    ["These pets are never sold"] =
+        "สัตว์เลี้ยงเหล่านี้จะไม่ถูกขาย",
+
+
+    --====================================================
+    -- LAB EGG
+    --====================================================
 
     ["Auto Sell Lab Egg"] =
         "ออโต้ขายไข่แล็บ",
@@ -820,7 +1005,9 @@ local TRANSLATIONS = {
         "ออโต้วางไข่รางวัลจากแล็บ",
 
 
-    --================ DR SCRAMBLE / LAB =================
+    --====================================================
+    -- DR SCRAMBLE / LAB / MECH
+    --====================================================
 
     ["Dr. Scramble"] =
         "Dr. Scramble",
@@ -842,6 +1029,15 @@ local TRANSLATIONS = {
 
     ["Mech Tween Speed"] =
         "ความเร็วบินไปตีหุ่นรบ",
+
+    ["Main Weapon Hold"] =
+        "เวลากดอาวุธหลัก",
+
+    ["Scrambler Hold"] =
+        "เวลากด Scrambler",
+
+    ["Swap Two Weapons"] =
+        "สลับอาวุธ 2 ชิ้น",
 
     ["Auto Claim Mastery"] =
         "ออโต้รับรางวัล Mastery",
@@ -973,7 +1169,62 @@ local TRANSLATIONS = {
         "บูสต์ลู่วิ่ง x2",
 
 
-    --================ BUTTERFLY BLOOM =================
+    --====================================================
+    -- AUTO FUSE MACHINE
+    --====================================================
+
+    ["Auto Fuse Machine"] =
+        "ออโต้เครื่องผสมสัตว์",
+
+    ["Fuse 3 same pets into an egg, nonstop"] =
+        "ผสมสัตว์เลี้ยงชนิดเดียวกัน 3 ตัวเป็นไข่แบบต่อเนื่อง",
+
+    ["Fuse Priority Mode"] =
+        "โหมดลำดับการผสม",
+
+    ["Lowest Rarity First"] =
+        "ความหายากต่ำสุดก่อน",
+
+    ["Highest Rarity First"] =
+        "ความหายากสูงสุดก่อน",
+
+    ["Most Copies First"] =
+        "จำนวนตัวซ้ำมากสุดก่อน",
+
+    ["Lowest Value First"] =
+        "มูลค่าต่ำสุดก่อน",
+
+    ["Pets To Use"] =
+        "สัตว์เลี้ยงที่จะใช้",
+
+    ["Lowest To Highest"] =
+        "ต่ำไปสูง",
+
+    ["Highest To Lowest"] =
+        "สูงไปต่ำ",
+
+    ["Max Rarity to Fuse"] =
+        "ความหายากสูงสุดที่จะผสม",
+
+    ["Specific Species to Fuse"] =
+        "ระบุสายพันธุ์ที่จะผสม",
+
+    ["Only fuse these species (empty = all)"] =
+        "ผสมเฉพาะสายพันธุ์เหล่านี้ (เว้นว่าง = ทั้งหมด)",
+
+    ["Skip Mutated Pets"] =
+        "ข้ามสัตว์เลี้ยงกลายพันธุ์",
+
+    ["Eject Incomplete Slots"] =
+        "เอาสัตว์ที่จัดชุดไม่ได้ออก",
+
+    ["Take out pets that can't make a set"] =
+        "นำสัตว์เลี้ยงที่จัดเป็นชุดไม่ได้ออก",
+
+
+    --====================================================
+    -- BUTTERFLY BLOOM
+    --====================================================
 
     ["Butterfly Bloom"] =
         "Butterfly Bloom",
@@ -1054,7 +1305,9 @@ local TRANSLATIONS = {
         "Banjo Cricket",
 
 
-    --================ ESSENCE / TRADE UP =================
+    --====================================================
+    -- ESSENCE / TRADE UP
+    --====================================================
 
     ["Auto Trade Up"] =
         "ออโต้เลื่อนระดับ",
@@ -1129,7 +1382,9 @@ local TRANSLATIONS = {
         "ข้ามไข่ที่มี Enchanted แล้ว การกลายพันธุ์อื่นยังได้รับ Essence",
 
 
-    --================ PRIORITY / SORTING =================
+    --====================================================
+    -- PRIORITY / SORTING
+    --====================================================
 
     ["Highest Value"] =
         "มูลค่าสูงสุด",
@@ -1156,7 +1411,9 @@ local TRANSLATIONS = {
         "ลำดับในกระเป๋า",
 
 
-    --================ FAVORITE =================
+    --====================================================
+    -- FAVORITE
+    --====================================================
 
     ["Auto Favorite"] =
         "ออโต้กดถูกใจ",
@@ -1170,26 +1427,108 @@ local TRANSLATIONS = {
     ["Favorite Pets Now"] =
         "กดถูกใจสัตว์เลี้ยงตอนนี้",
 
+    ["Favorite pets matching the rules below"] =
+        "กดถูกใจสัตว์เลี้ยงที่ตรงตามกฎด้านล่าง",
+
+    ["Favorite matching pets once"] =
+        "กดถูกใจสัตว์เลี้ยงที่ตรงเงื่อนไข 1 ครั้ง",
+
     ["Favorite Rule"] =
         "กฎการกดถูกใจ",
+
+    ["Pass any check or all checks"] =
+        "กำหนดให้ผ่านบางเงื่อนไขหรือทุกเงื่อนไข",
+
+    ["Match Any"] =
+        "ตรงอย่างใดอย่างหนึ่ง",
+
+    ["Match All"] =
+        "ตรงทุกเงื่อนไข",
 
     ["Favorite Min Rarity"] =
         "ความหายากขั้นต่ำที่จะกดถูกใจ",
 
+    ["Favorite pets of the chosen rarity and every rarity above it (Off = skip)"] =
+        "กดถูกใจสัตว์เลี้ยงระดับที่เลือกและสูงกว่า (ปิด = ข้าม)",
+
+    ["Favorite Mutations"] =
+        "การกลายพันธุ์ที่จะกดถูกใจ",
+
+    ["Mutation check (empty = skip)"] =
+        "ตรวจการกลายพันธุ์ (เว้นว่าง = ข้าม)",
+
     ["Min Favorite Value"] =
         "มูลค่าขั้นต่ำที่จะกดถูกใจ",
+
+    ["Value check (0 = skip)"] =
+        "ตรวจมูลค่า (0 = ข้าม)",
+
+    ["Always Favorite Species"] =
+        "กดถูกใจสายพันธุ์เหล่านี้เสมอ",
+
+    ["Always favorite these species"] =
+        "กดถูกใจสายพันธุ์เหล่านี้เสมอ",
 
     ["Auto Favorite Equipped"] =
         "ออโต้กดถูกใจตัวที่สวมใส่",
 
+    ["Keep equipped pets favorited"] =
+        "คงสถานะถูกใจให้สัตว์เลี้ยงที่สวมใส่",
+
     ["Auto Unfavorite Equipped"] =
         "ออโต้ปลดถูกใจตัวที่สวมใส่",
+
+    ["Unfavorite equipped pets not in the rules"] =
+        "ปลดถูกใจสัตว์เลี้ยงที่สวมใส่ซึ่งไม่ตรงกฎ",
+
+    ["Favorite Equipped Now"] =
+        "กดถูกใจตัวที่สวมใส่ตอนนี้",
+
+    ["Favorite all equipped pets once"] =
+        "กดถูกใจสัตว์เลี้ยงที่สวมใส่ทั้งหมด 1 ครั้ง",
 
     ["Unfavorite Equipped Now"] =
         "ยกเลิกถูกใจตัวที่สวมใส่อยู่ตอนนี้",
 
+    ["Unfavorite all equipped pets once"] =
+        "ปลดถูกใจสัตว์เลี้ยงที่สวมใส่ทั้งหมด 1 ครั้ง",
 
-    --================ ESP =================
+
+    --====================================================
+    -- AUTO PROGRESSION
+    --====================================================
+
+    ["Auto Progression"] =
+        "พัฒนาอัตโนมัติ",
+
+    ["Auto Buy Trail"] =
+        "ออโต้ซื้อ Trail",
+
+    ["Automatically buy available trails when affordable"] =
+        "ซื้อ Trail ที่ซื้อได้อัตโนมัติเมื่อเงินพอ",
+
+    ["Auto Upgrade Base"] =
+        "ออโต้อัปเกรดฐาน",
+
+    ["Automatically upgrade base when money is available"] =
+        "อัปเกรดฐานอัตโนมัติเมื่อมีเงินพอ",
+
+    ["Auto Claim"] =
+        "ออโต้รับรางวัล",
+
+    ["Claim offline money & index rewards"] =
+        "รับเงินออฟไลน์และรางวัล Index อัตโนมัติ",
+
+    ["Auto Claim Index"] =
+        "ออโต้รับรางวัล Index",
+
+    ["Claim index rewards as soon as they unlock"] =
+        "รับรางวัล Index ทันทีเมื่อปลดล็อก",
+
+
+    --====================================================
+    -- ESP
+    --====================================================
 
     ["ESP"] =
         "ESP",
@@ -1197,11 +1536,29 @@ local TRANSLATIONS = {
     ["ESP Eggs"] =
         "ESP ไข่",
 
+    ["ESP Fixed Size"] =
+        "ใช้ขนาด ESP คงที่",
+
     ["ESP Own Base"] =
         "ESP ไข่ในฐานตัวเอง",
 
     ["ESP Own Base Eggs"] =
         "ESP ไข่ในฐานตัวเอง",
+
+    ["Also show the eggs placed in your own base"] =
+        "แสดงไข่ที่วางอยู่ในฐานของตัวเองด้วย",
+
+    ["ESP Min Rarity"] =
+        "ความหายากขั้นต่ำของ ESP",
+
+    ["Show eggs of the chosen rarity and every rarity above it"] =
+        "แสดงไข่ระดับที่เลือกและทุกระดับที่สูงกว่า",
+
+    ["ESP Show Info"] =
+        "ข้อมูลที่แสดงใน ESP",
+
+    ["Min ESP Value"] =
+        "มูลค่าขั้นต่ำของ ESP",
 
     ["ESP Egg Size"] =
         "ขนาด ESP ไข่",
@@ -1230,11 +1587,40 @@ local TRANSLATIONS = {
     ["Guards"] =
         "ยาม",
 
+    ["Icon"] =
+        "ไอคอน",
 
-    --================ WEBHOOK / PREDICTOR =================
+    ["Name"] =
+        "ชื่อ",
+
+    ["Weight"] =
+        "น้ำหนัก",
+
+    ["Sell Price"] =
+        "ราคาขาย",
+
+    ["Distance"] =
+        "ระยะทาง",
+
+    ["State"] =
+        "สถานะ",
+
+    ["Username"] =
+        "ชื่อผู้ใช้",
+
+    ["Avatar"] =
+        "อวตาร",
+
+    ["Tool"] =
+        "อุปกรณ์",
+
+
+    --====================================================
+    -- WEBHOOK / PREDICTOR
+    --====================================================
 
     ["Discord Webhook"] =
-        "Discord Webhook",
+        "เว็บฮุก Discord",
 
     ["Discord Webhook URL"] =
         "URL Webhook ของ Discord",
@@ -1269,8 +1655,81 @@ local TRANSLATIONS = {
     ["Progress Tab > Auto Progression"] =
         "แท็บความคืบหน้า > พัฒนาอัตโนมัติ",
 
+    ["Sort By"] =
+        "เรียงตาม",
 
-    --================ QUICK ACCESS =================
+    ["Time Left"] =
+        "เวลาที่เหลือ",
+
+    ["Preview Card"] =
+        "แสดงตัวอย่างการ์ด",
+
+    ["Search eggs..."] =
+        "ค้นหาไข่...",
+
+    ["HOLD EGG"] =
+        "ถือไข่",
+
+    ["IN BAG"] =
+        "ในกระเป๋า",
+
+    ["EGGS"] =
+        "ไข่",
+
+    ["READY"] =
+        "พร้อม",
+
+    ["GROWING"] =
+        "กำลังโต",
+
+    ["TOTAL /S"] =
+        "รวม /วินาที",
+
+
+    --====================================================
+    -- INTERFACE / SETTINGS
+    --====================================================
+
+    ["Interface"] =
+        "หน้าตา",
+
+    ["UI Size"] =
+        "ขนาด UI",
+
+    ["Scales the main window; the corner grip does the same by hand"] =
+        "ปรับขนาดหน้าต่างหลัก หรือลากมุมเพื่อปรับเอง",
+
+    ["Notifications"] =
+        "การแจ้งเตือน",
+
+    ["Show notification cards; turning this off hides every notify"] =
+        "แสดงการแจ้งเตือน ปิดแล้วจะซ่อนการแจ้งเตือนทั้งหมด",
+
+    ["Open On Launch"] =
+        "เปิด UI ตอนเริ่ม",
+
+    ["Open the UI automatically when the script starts"] =
+        "เปิดหน้าต่าง UI อัตโนมัติเมื่อสคริปต์เริ่ม",
+
+    ["Defaults"] =
+        "ค่าเริ่มต้น",
+
+    ["Reset to Defaults"] =
+        "รีเซ็ตเป็นค่าเริ่มต้น",
+
+    ["Reset every feature to its built-in default"] =
+        "คืนค่าทุกฟีเจอร์กลับเป็นค่าเริ่มต้น",
+
+    ["Turn Off All Toggles"] =
+        "ปิดสวิตช์ทั้งหมด",
+
+    ["Switch off every enabled toggle in the feature tabs"] =
+        "ปิดทุกสวิตช์ที่เปิดอยู่ในแท็บฟีเจอร์",
+
+
+    --====================================================
+    -- QUICK ACCESS
+    --====================================================
 
     ["Quick Access"] =
         "เมนูลัด",
@@ -1306,10 +1765,21 @@ local TRANSLATIONS = {
         "แถบลัด 1",
 
 
-    --================ CONFIG =================
+    --====================================================
+    -- CONFIG
+    --====================================================
 
     ["Profiles"] =
         "โปรไฟล์",
+
+    ["Startup Config"] =
+        "คอนฟิกเริ่มต้น",
+
+    ["Auto Save Config"] =
+        "บันทึกคอนฟิกอัตโนมัติ",
+
+    ["Auto Load Config"] =
+        "โหลดคอนฟิกอัตโนมัติ",
 
     ["Delete Config"] =
         "ลบคอนฟิก",
@@ -1335,17 +1805,35 @@ local TRANSLATIONS = {
     ["Import Config"] =
         "นำเข้าคอนฟิก",
 
+    ["Import Config Text"] =
+        "ข้อความนำเข้าคอนฟิก",
+
+    ["Paste exported config JSON..."] =
+        "วาง JSON คอนฟิกที่ส่งออกไว้ที่นี่...",
+
+    ["Creates a config only; use Load Config or Set Startup after"] =
+        "สร้างคอนฟิกเท่านั้น จากนั้นใช้ โหลดคอนฟิก หรือ ตั้งคอนฟิกเริ่มต้น",
+
     ["Config name"] =
         "ชื่อคอนฟิก",
 
     ["New Config Name"] =
         "ชื่อคอนฟิกใหม่",
 
+    ["New config name..."] =
+        "ชื่อคอนฟิกใหม่...",
+
     ["Create config"] =
         "สร้างคอนฟิก",
 
     ["Create New Config"] =
         "สร้างคอนฟิกใหม่",
+
+    ["Create New"] =
+        "สร้างใหม่",
+
+    ["New config copies current settings"] =
+        "คอนฟิกใหม่จะคัดลอกการตั้งค่าปัจจุบัน",
 
     ["Delete config"] =
         "ลบคอนฟิก",
@@ -1363,7 +1851,9 @@ local TRANSLATIONS = {
         "ยกเลิกโหลดอัตโนมัติ",
 
 
-    --================ TAB HEADERS =================
+    --====================================================
+    -- TAB HEADERS
+    --====================================================
 
     ["Farm Tab > Auto Sell Lab Egg"] =
         "แท็บฟาร์ม > ออโต้ขายไข่แล็บ",
@@ -1463,6 +1953,9 @@ local function TranslateState(value)
 
     elseif lower == "none" then
         return "ไม่มี"
+
+    elseif lower == "default" then
+        return "ค่าเริ่มต้น"
     end
 
     return value
@@ -1535,6 +2028,285 @@ local function TranslateText(text)
 
 
     --====================================================
+    -- NUMBERED RARITY
+    --====================================================
+
+    local rarityNumber,
+          rarityName =
+        clean:match(
+            "^(%d+)%s*%-%s*(.-)%s*$"
+        )
+
+    if
+        rarityNumber
+        and rarityName
+    then
+
+        local rarityThai =
+            LOWER_TRANSLATIONS[
+                string.lower(rarityName)
+            ]
+
+        if rarityThai then
+
+            local result =
+                rarityNumber
+                .. " - "
+                .. rarityThai
+
+            STRING_CACHE[text] =
+                result
+
+            return result
+        end
+    end
+
+
+    --====================================================
+    -- STEAL PANEL DYNAMIC - NEW
+    --====================================================
+
+    local sortMode =
+        clean:match(
+            "^Sort:?%s*(.+)$"
+        )
+
+    if sortMode then
+
+        local sortThai =
+            LOWER_TRANSLATIONS[
+                string.lower(
+                    CleanText(sortMode)
+                )
+            ]
+            or sortMode
+
+        local result =
+            "เรียงตาม: "
+            .. sortThai
+
+        STRING_CACHE[text] =
+            result
+
+        return result
+    end
+
+
+    local autoStealState =
+        clean:match(
+            "^Auto Steal:%s*(ON|OFF)$"
+        )
+
+    if autoStealState then
+
+        local result =
+            "ออโต้ขโมย: "
+            .. TranslateState(
+                string.lower(autoStealState)
+            )
+
+        STRING_CACHE[text] =
+            result
+
+        return result
+    end
+
+
+    local instantStealState =
+        clean:match(
+            "^Instant Steal:%s*(ON|OFF)$"
+        )
+
+    if instantStealState then
+
+        local result =
+            "ขโมยทันที: "
+            .. TranslateState(
+                string.lower(instantStealState)
+            )
+
+        STRING_CACHE[text] =
+            result
+
+        return result
+    end
+
+
+    --====================================================
+    -- CONFIG DYNAMIC TEXT
+    --====================================================
+
+    local startupConfig =
+        clean:match(
+            "^Startup Config:%s*(.+)$"
+        )
+
+    if startupConfig then
+
+        local result =
+            "คอนฟิกเริ่มต้น: "
+            .. TranslateState(startupConfig)
+
+        STRING_CACHE[text] =
+            result
+
+        return result
+    end
+
+
+    local autoSaveConfig =
+        clean:match(
+            "^Auto save:%s*(.+)$"
+        )
+
+    if autoSaveConfig then
+
+        local result =
+            "บันทึกอัตโนมัติ: "
+            .. TranslateState(autoSaveConfig)
+
+        STRING_CACHE[text] =
+            result
+
+        return result
+    end
+
+
+    local autoLoadConfig =
+        clean:match(
+            "^Auto load:%s*(.+)$"
+        )
+
+    if autoLoadConfig then
+
+        local result =
+            "โหลดอัตโนมัติ: "
+            .. TranslateState(autoLoadConfig)
+
+        STRING_CACHE[text] =
+            result
+
+        return result
+    end
+
+
+    local saveConfig =
+        clean:match(
+            "^Save:%s*(.+)$"
+        )
+
+    if saveConfig then
+
+        local result =
+            "บันทึก: "
+            .. TranslateState(saveConfig)
+
+        STRING_CACHE[text] =
+            result
+
+        return result
+    end
+
+
+    --====================================================
+    -- PREDICTOR CARD COUNTS
+    --====================================================
+
+    local allCount =
+        clean:match(
+            "^ALL%s+(%d+)$"
+        )
+
+    if allCount then
+
+        local result =
+            "ทั้งหมด "
+            .. allCount
+
+        STRING_CACHE[text] =
+            result
+
+        return result
+    end
+
+
+    local readyCount =
+        clean:match(
+            "^READY%s+(%d+)$"
+        )
+
+    if readyCount then
+
+        local result =
+            "พร้อม "
+            .. readyCount
+
+        STRING_CACHE[text] =
+            result
+
+        return result
+    end
+
+
+    local growingCount =
+        clean:match(
+            "^GROWING%s+(%d+)$"
+        )
+
+    if growingCount then
+
+        local result =
+            "กำลังโต "
+            .. growingCount
+
+        STRING_CACHE[text] =
+            result
+
+        return result
+    end
+
+
+    local inBagCount =
+        clean:match(
+            "^IN BAG%s+(%d+)$"
+        )
+
+    if inBagCount then
+
+        local result =
+            "ในกระเป๋า "
+            .. inBagCount
+
+        STRING_CACHE[text] =
+            result
+
+        return result
+    end
+
+
+    local currentEgg,
+          totalEggsByValue =
+        clean:match(
+            "^#(%d+)%s+of%s+(%d+)%s+eggs%s+by%s+value$"
+        )
+
+    if currentEgg then
+
+        local result =
+            "#"
+            .. currentEgg
+            .. " จาก "
+            .. totalEggsByValue
+            .. " ไข่ เรียงตามมูลค่า"
+
+        STRING_CACHE[text] =
+            result
+
+        return result
+    end
+
+
+    --====================================================
     -- PLAYERS
     --====================================================
 
@@ -1595,6 +2367,135 @@ local function TranslateText(text)
         local result =
             "แถบลัด "
             .. quick
+
+        STRING_CACHE[text] =
+            result
+
+        return result
+    end
+
+
+    --====================================================
+    -- NEXT MECH PORTAL
+    --====================================================
+
+    local mechPortalTime =
+        clean:match(
+            "^Next Mech portal in%s+(.+)$"
+        )
+
+    if mechPortalTime then
+
+        local result =
+            "ประตู Mech ครั้งถัดไปใน "
+            .. mechPortalTime
+
+        STRING_CACHE[text] =
+            result
+
+        return result
+    end
+
+
+    --====================================================
+    -- PET MATCHES
+    --====================================================
+
+    local petMatches,
+          petValue =
+        clean:match(
+            "^Pet matches%s*%-%s*(%d+)%s+pets?%s+for%s+%$(.+)$"
+        )
+
+    if petMatches then
+
+        local result =
+            "สัตว์เลี้ยงที่ตรงเงื่อนไข - "
+            .. petMatches
+            .. " ตัว มูลค่า $"
+            .. petValue
+
+        STRING_CACHE[text] =
+            result
+
+        return result
+    end
+
+
+    --====================================================
+    -- EGG MATCHES
+    --====================================================
+
+    local eggMatches,
+          eggMatchValue =
+        clean:match(
+            "^Egg matches%s*%-%s*(%d+)%s+eggs?%s+for%s+%$(.+)$"
+        )
+
+    if eggMatches then
+
+        local result =
+            "ไข่ที่ตรงเงื่อนไข - "
+            .. eggMatches
+            .. " ฟอง มูลค่า $"
+            .. eggMatchValue
+
+        STRING_CACHE[text] =
+            result
+
+        return result
+    end
+
+
+    --====================================================
+    -- NEXT FUSE
+    --====================================================
+
+    local fuseAmount,
+          fuseSpecies,
+          fuseValue =
+        clean:match(
+            "^Next fuse%s*%-%s*(%d+)%s+(.+)%s+for%s+%$(.+)$"
+        )
+
+    if fuseAmount then
+
+        local result =
+            "การผสมถัดไป - "
+            .. fuseAmount
+            .. " "
+            .. fuseSpecies
+            .. " มูลค่า $"
+            .. fuseValue
+
+        STRING_CACHE[text] =
+            result
+
+        return result
+    end
+
+
+    --====================================================
+    -- FAVORITE MATCHES
+    --====================================================
+
+    local favMatches,
+          favToMark,
+          favDone =
+        clean:match(
+            "^Favorite matches%s*%-%s*(%d+)%s+pets?,%s*(%d+)%s+to mark%s*|%s*(%d+)%s+favorited$"
+        )
+
+    if favMatches then
+
+        local result =
+            "ตรงเงื่อนไข "
+            .. favMatches
+            .. " ตัว | ต้องกด "
+            .. favToMark
+            .. " ตัว | กดถูกใจแล้ว "
+            .. favDone
+            .. " ตัว"
 
         STRING_CACHE[text] =
             result
@@ -1834,9 +2735,6 @@ local function TranslateText(text)
 
     --====================================================
     -- SAFE PARTIALS ONLY
-    --
-    -- ไม่มีการ gsub Butterfly Bloom แบบกว้าง
-    -- ป้องกันคำซ้ำและ Flicker
     --====================================================
 
     local result =
@@ -1994,10 +2892,6 @@ local function ApplyTranslation(
 
     --====================================================
     -- DYNAMIC TEXT
-    --
-    -- ไม่ใช้ RenderStepped
-    -- ไม่ใช้ permanent scan
-    -- แปลเมื่อ Text เปลี่ยนจริงเท่านั้น
     --====================================================
 
     if
@@ -2383,6 +3277,8 @@ local function IsLooseTarget(object)
         lower == "anti guard"
         or
         lower == "anti guard panel"
+        or
+        lower == "steal panel"
 end
 
 
@@ -2452,8 +3348,8 @@ end
 --========================================================
 -- 17. ROOT WATCHER
 --
--- ไม่แปล UI ทั้งเกม
--- จับเฉพาะ Chilli / Popup ที่เรารู้จัก
+-- ไม่มี Full Scan
+-- ตรวจเฉพาะ Object ที่ถูกเพิ่มใหม่
 --========================================================
 
 local WatchedRoots =
@@ -2511,7 +3407,7 @@ local function WatchRoot(root)
 
 
             --============================================
-            -- ANTI GUARD FLOATING
+            -- FLOATING / LOOSE TARGET
             --============================================
 
             if IsLooseTarget(object) then
@@ -2526,9 +3422,11 @@ local function WatchRoot(root)
 
 
             --============================================
-            -- POPUP / DROPDOWN
-            -- แปลเฉพาะคำที่รู้จัก
-            -- ไม่เปิด watcher มั่วทั้งเกม
+            -- POPUP / DROPDOWN / FLOATING PANEL
+            --
+            -- ใช้ TranslateText จริงแทนตรวจเฉพาะ Dictionary
+            -- ทำให้ Sort:, Auto Steal:, Instant Steal:
+            -- แปลได้โดยไม่เพิ่ม Loop
             --============================================
 
             if
@@ -2545,21 +3443,19 @@ local function WatchRoot(root)
                 if
                     ok
                     and type(text) == "string"
+                    and text ~= ""
                 then
 
-                    local clean =
-                        CleanText(text)
+                    local translated =
+                        TranslateText(text)
 
-                    if
-                        LOWER_TRANSLATIONS[
-                            string.lower(clean)
-                        ]
-                    then
+                    if translated ~= text then
 
                         ApplyTranslation(
                             object,
-                            false
+                            true
                         )
+
                     end
                 end
             end
@@ -2589,10 +3485,6 @@ local CHILLI_ALREADY_OPEN =
 
 --========================================================
 -- 19. LOAD DIRECT CHILLI
---
--- อยู่ในก้อนเดียว
--- ไม่ใช้ Kheroro wrapper
--- ถ้ามี Chilli อยู่แล้วจะไม่โหลดซ้ำ
 --========================================================
 
 if not CHILLI_ALREADY_OPEN then
@@ -2651,7 +3543,8 @@ end
 --========================================================
 -- 20. INITIAL DISCOVERY
 --
--- ตรวจแค่ช่วงเริ่มต้น ไม่วนตลอดเกม
+-- ตรวจเฉพาะตอนเริ่ม
+-- ไม่มี Loop สแกนถาวร
 --========================================================
 
 task.spawn(function()
@@ -2784,6 +3677,22 @@ print(
 
 print(
     "✅ NO PERMANENT FULL SCAN"
+)
+
+print(
+    "✅ STEAL PANEL UPDATED"
+)
+
+print(
+    "✅ SORT MODE UPDATED"
+)
+
+print(
+    "✅ AUTO / INSTANT STEAL STATUS UPDATED"
+)
+
+print(
+    "✅ CONFIG IMPORT / SAVE UPDATED"
 )
 
 print(
