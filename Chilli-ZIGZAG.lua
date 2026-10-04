@@ -1,9 +1,11 @@
 --========================================================
 -- CHILLI HUB THAI - ZIGZAG
--- COMPLETE OPTIMIZED VERSION
+-- COMPLETE OPTIMIZED + BUTTERFLY BLOOM UPDATE
 -- แปลภาษาไทยโดย ZIGZAG
 --
 -- ✅ คำแปลเดิมครบ
+-- ✅ Butterfly Bloom Update
+-- ✅ Essence / Trade Up / Wisp
 -- ✅ Anti Guard แถบลอย
 -- ✅ Dropdown / Popup
 -- ✅ Dynamic Text
@@ -26,10 +28,8 @@ local CoreGui =
 local StarterGui =
     game:GetService("StarterGui")
 
-
 local LocalPlayer =
     Players.LocalPlayer
-
 
 local PlayerGui =
     LocalPlayer:WaitForChild(
@@ -73,10 +73,6 @@ task.spawn(function()
 
     end
 
-
-    --====================================================
-    -- CREDIT
-    --====================================================
 
     source =
         source:gsub(
@@ -130,10 +126,7 @@ end)
 
 local TRANSLATIONS = {
 
-
-    --====================================================
     -- GENERAL
-    --====================================================
 
     ["WARNING"] =
         "คำเตือน",
@@ -211,9 +204,7 @@ local TRANSLATIONS = {
         "ค่าเริ่มต้น",
 
 
-    --====================================================
     -- RARITY
-    --====================================================
 
     ["Common"] =
         "ธรรมดา",
@@ -246,9 +237,7 @@ local TRANSLATIONS = {
         "อีเทอร์นัล",
 
 
-    --====================================================
     -- BASIC SYSTEM
-    --====================================================
 
     ["Anti AFK"] =
         "กันหลุด (Anti AFK)",
@@ -314,9 +303,7 @@ local TRANSLATIONS = {
         "พลังการกระโดด",
 
 
-    --====================================================
     -- PERFORMANCE / HUD
-    --====================================================
 
     ["Performance"] =
         "ประสิทธิภาพ",
@@ -364,9 +351,7 @@ local TRANSLATIONS = {
         "ตัวปรับประสิทธิภาพ",
 
 
-    --====================================================
     -- SERVER / AUTO HOP
-    --====================================================
 
     ["Server Hop"] =
         "ย้ายเซิร์ฟเวอร์",
@@ -435,9 +420,7 @@ local TRANSLATIONS = {
         "ย้ายเซิร์ฟต่อเพื่อค้นหา",
 
 
-    --====================================================
     -- FARM / STEAL
-    --====================================================
 
     ["Auto Steal"] =
         "ออโต้ขโมย",
@@ -479,9 +462,7 @@ local TRANSLATIONS = {
         "หลีกเลี่ยง Rift",
 
 
-    --====================================================
     -- PLACE
-    --====================================================
 
     ["Auto Place Egg"] =
         "ออโต้วางไข่",
@@ -499,9 +480,7 @@ local TRANSLATIONS = {
         "มูลค่าขั้นต่ำที่จะวาง",
 
 
-    --====================================================
     -- HATCH & EQUIP
-    --====================================================
 
     ["Auto Hatch"] =
         "ออโต้ฟักไข่",
@@ -552,9 +531,7 @@ local TRANSLATIONS = {
         "เปลี่ยนไปใช้สัตว์เลี้ยงที่ดีกว่าทันทีเมื่อมี",
 
 
-    --====================================================
     -- TREADMILL
-    --====================================================
 
     ["Auto Treadmill"] =
         "ออโต้ลู่วิ่ง",
@@ -572,9 +549,7 @@ local TRANSLATIONS = {
         "ใช้ลู่วิ่งระหว่างรอขโมย",
 
 
-    --====================================================
     -- SELL
-    --====================================================
 
     ["Auto Sell"] =
         "ออโต้ขาย",
@@ -601,9 +576,7 @@ local TRANSLATIONS = {
         "ห้ามขายตัวที่กำลังใช้งาน",
 
 
-    --====================================================
     -- LAB EGG
-    --====================================================
 
     ["Auto Sell Lab Egg"] =
         "ออโต้ขายไข่แล็บ",
@@ -651,9 +624,7 @@ local TRANSLATIONS = {
         "ออโต้วางไข่รางวัลจากแล็บ",
 
 
-    --====================================================
     -- SCRAMBLE / LAB
-    --====================================================
 
     ["Auto Claim Mastery"] =
         "ออโต้รับรางวัล Mastery",
@@ -702,8 +673,128 @@ local TRANSLATIONS = {
 
 
     --====================================================
-    -- FAVORITE
+    -- BUTTERFLY BLOOM / ENCHANTED UPDATE
     --====================================================
+
+    ["Butterfly Bloom"] =
+        "กิจกรรม Butterfly Bloom",
+
+    ["Auto Butterfly Bloom"] =
+        "ออโต้ Butterfly Bloom",
+
+    ["Catch Mode"] =
+        "โหมดจับผีเสื้อ",
+
+    ["Stand"] =
+        "ยืนรอ",
+
+    ["Chase"] =
+        "ไล่จับ",
+
+    ["Circle"] =
+        "วนเป็นวง",
+
+    ["Patrol"] =
+        "ลาดตระเวน",
+
+    ["Catch Priority"] =
+        "ลำดับการจับ",
+
+    ["Only for Chase mode"] =
+        "ใช้เฉพาะโหมดไล่จับ",
+
+    ["Rarest"] =
+        "หายากสุดก่อน",
+
+    ["Closest"] =
+        "ใกล้สุดก่อน",
+
+    ["Catch Butterflies"] =
+        "จับผีเสื้อ",
+
+    ["Radiant Butterfly"] =
+        "ผีเสื้อ Radiant",
+
+    ["Amethyst Butterfly"] =
+        "ผีเสื้อ Amethyst",
+
+    ["Sapphire Butterfly"] =
+        "ผีเสื้อ Sapphire",
+
+    ["Emerald Butterfly"] =
+        "ผีเสื้อ Emerald",
+
+    ["Tween Speed"] =
+        "ความเร็วการวาร์ป (Tween)",
+
+    ["Auto Trade Up"] =
+        "ออโต้แลกขั้น",
+
+    ["Trade Up"] =
+        "แลกขั้น",
+
+    ["Trade Up Tiers"] =
+        "ระดับที่จะแลกขั้น",
+
+    ["Emerald To Sapphire"] =
+        "Emerald → Sapphire",
+
+    ["Sapphire To Amethyst"] =
+        "Sapphire → Amethyst",
+
+    ["Amethyst To Radiant"] =
+        "Amethyst → Radiant",
+
+    ["Smart Trade For Essence"] =
+        "แลกแบบอัจฉริยะเพื่อ Essence",
+
+    ["Auto Craft Essence"] =
+        "ออโต้สร้าง Essence",
+
+    ["Auto Use Enchanted Essence"] =
+        "ออโต้ใช้ Enchanted Essence",
+
+    ["Essence Min Rarity"] =
+        "ความหายากขั้นต่ำสำหรับ Essence",
+
+    ["Only eggs of this rarity and above get the essence"] =
+        "ใช้ Essence เฉพาะไข่ระดับนี้ขึ้นไป",
+
+    ["Essence Min Value"] =
+        "มูลค่าขั้นต่ำสำหรับ Essence",
+
+    ["Essence Target Eggs"] =
+        "ไข่เป้าหมายสำหรับ Essence",
+
+    ["Only use the essence on these eggs (empty = all)"] =
+        "ใช้ Essence เฉพาะกับไข่เหล่านี้ (เว้นว่าง = ทั้งหมด)",
+
+    ["Essence Priority"] =
+        "ลำดับความสำคัญของ Essence",
+
+    ["Which egg gets the essence first"] =
+        "เลือกไข่ที่จะได้รับ Essence ก่อน",
+
+    ["Essence Skip Enchanted Eggs"] =
+        "ข้ามไข่ที่มี Enchanted แล้ว",
+
+    ["Skip eggs that already got Enchanted, other mutations still get the essence"] =
+        "ข้ามไข่ที่มี Enchanted แล้ว แต่การกลายพันธุ์อื่นยังใช้ Essence ได้",
+
+    ["Wisp Companion"] =
+        "คู่หู Wisp",
+
+    ["Auto Wisp"] =
+        "ออโต้ Wisp",
+
+    ["Banjo Cricket"] =
+        "Banjo Cricket",
+
+    ["Auto Banjo Cricket"] =
+        "ออโต้ Banjo Cricket",
+
+
+    -- FAVORITE
 
     ["Auto Favorite Pets"] =
         "ออโต้กดถูกใจสัตว์เลี้ยง",
@@ -724,9 +815,7 @@ local TRANSLATIONS = {
         "ยกเลิกถูกใจตัวที่สวมใส่อยู่ตอนนี้",
 
 
-    --====================================================
     -- ESP
-    --====================================================
 
     ["Player Tab > ESP"] =
         "แท็บผู้เล่น > ESP",
@@ -753,9 +842,7 @@ local TRANSLATIONS = {
         "ยาม",
 
 
-    --====================================================
     -- WEBHOOK / PREDICTOR
-    --====================================================
 
     ["Predictor Tab > Discord Webhook"] =
         "แท็บคาดการณ์ > Discord Webhook",
@@ -779,9 +866,7 @@ local TRANSLATIONS = {
         "แท็บความคืบหน้า > พัฒนาอัตโนมัติ",
 
 
-    --====================================================
     -- QUICK ACCESS
-    --====================================================
 
     ["Quick Access"] =
         "เมนูลัด",
@@ -817,9 +902,7 @@ local TRANSLATIONS = {
         "แถบลัด 1",
 
 
-    --====================================================
     -- DISCORD / COMMUNITY
-    --====================================================
 
     ["Discord Tab > Community"] =
         "แท็บดิสคอร์ด > ชุมชน",
@@ -831,9 +914,7 @@ local TRANSLATIONS = {
         "แท็บตั้งค่า > ค่าเริ่มต้น",
 
 
-    --====================================================
     -- CONFIG / PROFILE
-    --====================================================
 
     ["Profiles"] =
         "โปรไฟล์",
@@ -857,9 +938,7 @@ local TRANSLATIONS = {
         "ติ๊กคอนฟิกที่ต้องการลบ แล้วกดลบ",
 
 
-    --====================================================
     -- FARM TAB HEADERS
-    --====================================================
 
     ["Farm Tab > Auto Sell Lab Egg"] =
         "แท็บฟาร์ม > ออโต้ขายไข่แล็บ",
@@ -889,9 +968,7 @@ local TRANSLATIONS = {
         "แท็บย้ายเซิร์ฟอัตโนมัติ > ค้นหาไข่",
 
 
-    --====================================================
     -- IMPORT / CONFIG
-    --====================================================
 
     ["Import / export"] =
         "นำเข้า / ส่งออก",
@@ -930,7 +1007,6 @@ local TRANSLATIONS = {
 --========================================================
 
 local LOWER_TRANSLATIONS = {}
-
 
 for english,thai
     in pairs(TRANSLATIONS)
@@ -975,16 +1051,13 @@ local function TranslateText(text)
     end
 
 
-    --====================================================
     -- CREDIT
-    --====================================================
 
     cleanText =
         cleanText:gsub(
             "KHERORO",
             "ZIGZAG"
         )
-
 
     cleanText =
         cleanText:gsub(
@@ -993,32 +1066,67 @@ local function TranslateText(text)
         )
 
 
-    --====================================================
     -- EXACT TRANSLATION
-    --====================================================
 
     local translated =
         LOWER_TRANSLATIONS[
             string.lower(cleanText)
         ]
 
-
     if translated then
-
         return translated
-
     end
 
 
     --====================================================
-    -- LAB EGG MATCH
+    -- BUTTERFLY BLOOM LIVE STATUS
+    -- Off | Butterfly Bloom live, 1:48 left
     --====================================================
+
+    local bloomState,bloomLeft =
+        cleanText:match(
+            "^(%a+)%s*|%s*Butterfly Bloom live,%s*(.-)%s+left$"
+        )
+
+    if bloomState and bloomLeft then
+
+        local stateThai =
+            bloomState
+
+        if string.lower(bloomState) == "off" then
+            stateThai = "ปิด"
+        elseif string.lower(bloomState) == "on" then
+            stateThai = "เปิด"
+        end
+
+        return
+            stateThai
+            .. " | Butterfly Bloom กำลังทำงาน เหลือ "
+            .. bloomLeft
+
+    end
+
+
+    local bloomOnly =
+        cleanText:match(
+            "^Butterfly Bloom live,%s*(.-)%s+left$"
+        )
+
+    if bloomOnly then
+
+        return
+            "Butterfly Bloom กำลังทำงาน เหลือ "
+            .. bloomOnly
+
+    end
+
+
+    -- LAB EGG MATCH
 
     local eggCount,value =
         cleanText:match(
             "^Lab egg matches%s*%-%s*(%d+)%s*eggs%s*for%s*%$(.*)$"
         )
-
 
     if eggCount then
 
@@ -1031,15 +1139,12 @@ local function TranslateText(text)
     end
 
 
-    --====================================================
     -- PLAYERS 5/7
-    --====================================================
 
     local currentPlayers,maxPlayers =
         cleanText:match(
             "^Players%s+(%d+)%/(%d+)$"
         )
-
 
     if currentPlayers then
 
@@ -1052,15 +1157,12 @@ local function TranslateText(text)
     end
 
 
-    --====================================================
     -- 8 selected
-    --====================================================
 
     local selected =
         cleanText:match(
             "^(%d+)%s+selected$"
         )
-
 
     if selected then
 
@@ -1072,15 +1174,29 @@ local function TranslateText(text)
     end
 
 
-    --====================================================
+    -- Selected 8 items
+
+    local selectedItems =
+        cleanText:match(
+            "^[Ss]elected%s+(%d+)%s+[Ii]tems$"
+        )
+
+    if selectedItems then
+
+        return
+            "เลือกแล้ว "
+            .. selectedItems
+            .. " รายการ"
+
+    end
+
+
     -- QUICK BAR N
-    --====================================================
 
     local quickBar =
         cleanText:match(
             "^Quick Bar%s+(%d+)$"
         )
-
 
     if quickBar then
 
@@ -1091,15 +1207,12 @@ local function TranslateText(text)
     end
 
 
-    --====================================================
     -- LAST STEAL
-    --====================================================
 
     local lastSteal =
         cleanText:match(
             "^Last Steal:%s*(.+)$"
         )
-
 
     if lastSteal then
 
@@ -1113,7 +1226,6 @@ local function TranslateText(text)
 
         end
 
-
         return
             "การขโมยล่าสุด: "
             .. lastSteal
@@ -1121,15 +1233,12 @@ local function TranslateText(text)
     end
 
 
-    --====================================================
     -- LAST ISSUE
-    --====================================================
 
     local lastIssue =
         cleanText:match(
             "^Last issue:%s*(.+)$"
         )
-
 
     if lastIssue then
 
@@ -1143,7 +1252,6 @@ local function TranslateText(text)
 
         end
 
-
         return
             "ปัญหาล่าสุด: "
             .. lastIssue
@@ -1151,15 +1259,12 @@ local function TranslateText(text)
     end
 
 
-    --====================================================
     -- LAST SELL
-    --====================================================
 
     local lastSell =
         cleanText:match(
             "^Last Sell:%s*(.+)$"
         )
-
 
     if lastSell then
 
@@ -1173,7 +1278,6 @@ local function TranslateText(text)
 
         end
 
-
         return
             "การขายล่าสุด: "
             .. lastSell
@@ -1181,15 +1285,12 @@ local function TranslateText(text)
     end
 
 
-    --====================================================
     -- LAST FUSE
-    --====================================================
 
     local lastFuse =
         cleanText:match(
             "^Last Fuse:%s*(.+)$"
         )
-
 
     if lastFuse then
 
@@ -1203,7 +1304,6 @@ local function TranslateText(text)
 
         end
 
-
         return
             "การผสมล่าสุด: "
             .. lastFuse
@@ -1211,9 +1311,7 @@ local function TranslateText(text)
     end
 
 
-    --====================================================
     -- PARTIAL REPLACEMENTS
-    --====================================================
 
     local result =
         cleanText
@@ -1247,10 +1345,125 @@ local function TranslateText(text)
         )
 
 
-    if result ~= text then
+    -- BUTTERFLY / ENCHANTED PARTIALS
 
+    result =
+        result:gsub(
+            "Auto Butterfly Bloom",
+            "ออโต้ Butterfly Bloom"
+        )
+
+    result =
+        result:gsub(
+            "Butterfly Bloom",
+            "กิจกรรม Butterfly Bloom"
+        )
+
+    result =
+        result:gsub(
+            "Catch Butterflies",
+            "จับผีเสื้อ"
+        )
+
+    result =
+        result:gsub(
+            "Catch Mode",
+            "โหมดจับผีเสื้อ"
+        )
+
+    result =
+        result:gsub(
+            "Catch Priority",
+            "ลำดับการจับ"
+        )
+
+    result =
+        result:gsub(
+            "Only for Chase mode",
+            "ใช้เฉพาะโหมดไล่จับ"
+        )
+
+    result =
+        result:gsub(
+            "Auto Trade Up",
+            "ออโต้แลกขั้น"
+        )
+
+    result =
+        result:gsub(
+            "Trade Up Tiers",
+            "ระดับที่จะแลกขั้น"
+        )
+
+    result =
+        result:gsub(
+            "Smart Trade For Essence",
+            "แลกแบบอัจฉริยะเพื่อ Essence"
+        )
+
+    result =
+        result:gsub(
+            "Auto Craft Essence",
+            "ออโต้สร้าง Essence"
+        )
+
+    result =
+        result:gsub(
+            "Auto Use Enchanted Essence",
+            "ออโต้ใช้ Enchanted Essence"
+        )
+
+    result =
+        result:gsub(
+            "Essence Min Rarity",
+            "ความหายากขั้นต่ำสำหรับ Essence"
+        )
+
+    result =
+        result:gsub(
+            "Essence Min Value",
+            "มูลค่าขั้นต่ำสำหรับ Essence"
+        )
+
+    result =
+        result:gsub(
+            "Essence Target Eggs",
+            "ไข่เป้าหมายสำหรับ Essence"
+        )
+
+    result =
+        result:gsub(
+            "Essence Priority",
+            "ลำดับความสำคัญของ Essence"
+        )
+
+    result =
+        result:gsub(
+            "Essence Skip Enchanted Eggs",
+            "ข้ามไข่ที่มี Enchanted แล้ว"
+        )
+
+    result =
+        result:gsub(
+            "Wisp Companion",
+            "คู่หู Wisp"
+        )
+
+    result =
+        result:gsub(
+            "Auto Wisp",
+            "ออโต้ Wisp"
+        )
+
+    result =
+        result:gsub(
+            "Auto Banjo Cricket",
+            "ออโต้ Banjo Cricket"
+        )
+
+
+    if result ~= cleanText then
         return result
-
     end
 
 
@@ -1297,9 +1510,6 @@ local Watched =
 
 --========================================================
 -- 9. APPLY TRANSLATION
---
--- watchChanges = true
--- เฝ้าดู Text เปลี่ยนเฉพาะ Chilli
 --========================================================
 
 local function ApplyTranslation(
@@ -1308,16 +1518,12 @@ local function ApplyTranslation(
 )
 
     if not IsTextObject(object) then
-
         return false
-
     end
 
 
     if Busy[object] then
-
         return false
-
     end
 
 
@@ -1328,10 +1534,6 @@ local function ApplyTranslation(
     local changed =
         false
 
-
-    --====================================================
-    -- TEXT
-    --====================================================
 
     pcall(function()
 
@@ -1358,10 +1560,6 @@ local function ApplyTranslation(
 
     end)
 
-
-    --====================================================
-    -- PLACEHOLDER
-    --====================================================
 
     if object:IsA("TextBox") then
 
@@ -1396,10 +1594,6 @@ local function ApplyTranslation(
     Busy[object] =
         nil
 
-
-    --====================================================
-    -- WATCH CHANGES
-    --====================================================
 
     if
         watchChanges
@@ -1500,9 +1694,7 @@ local function AddRoot(root)
     do
 
         if existing == root then
-
             return false
-
         end
 
     end
@@ -1557,9 +1749,7 @@ local function IsKnownRoot(object)
     do
 
         if object == root then
-
             return true
-
         end
 
     end
@@ -1577,9 +1767,7 @@ end
 local function IsChilliTitle(object)
 
     if not IsTextObject(object) then
-
         return false
-
     end
 
 
@@ -1618,9 +1806,7 @@ end
 local function FindChilliContainer(object)
 
     if not object then
-
         return nil
-
     end
 
 
@@ -1636,9 +1822,7 @@ local function FindChilliContainer(object)
 
 
         if current:IsA("ScreenGui") then
-
             return current
-
         end
 
 
@@ -1751,10 +1935,6 @@ local function TrackChilli(gui)
         gui
 
 
-    --====================================================
-    -- SCAN CHILLI ครั้งเดียว
-    --====================================================
-
     for _,object
         in ipairs(
             gui:GetDescendants()
@@ -1768,10 +1948,6 @@ local function TrackChilli(gui)
 
     end
 
-
-    --====================================================
-    -- NEW OBJECTS
-    --====================================================
 
     local descendantConnection =
         gui.DescendantAdded
@@ -1802,10 +1978,6 @@ local function TrackChilli(gui)
     )
 
 
-    --====================================================
-    -- GUI REMOVED
-    --====================================================
-
     local ancestryConnection =
         gui.AncestryChanged
         :Connect(function()
@@ -1834,17 +2006,12 @@ end
 
 --========================================================
 -- 16. LOOSE TARGET
---
--- UI แยกออกจากหน้าต่างหลัก
--- เช่น Anti Guard / Popup
 --========================================================
 
 local function IsLooseTarget(object)
 
     if not IsTextObject(object) then
-
         return false
-
     end
 
 
@@ -1878,9 +2045,7 @@ local function IsLooseTarget(object)
 
 
     if not clean then
-
         return false
-
     end
 
 
@@ -1898,9 +2063,6 @@ end
 
 --========================================================
 -- 17. ROOT EVENT WATCHER
---
--- ไม่มี Loop Scan
--- ตรวจเฉพาะ UI ที่เกิดใหม่
 --========================================================
 
 local RootConnections =
@@ -1919,16 +2081,12 @@ local WatchedRoots =
 local function WatchRoot(root)
 
     if not root then
-
         return
-
     end
 
 
     if WatchedRoots[root] then
-
         return
-
     end
 
 
@@ -1941,9 +2099,7 @@ local function WatchRoot(root)
         :Connect(function(object)
 
             if not IsTextObject(object) then
-
                 return
-
             end
 
 
@@ -1958,10 +2114,6 @@ local function WatchRoot(root)
 
                 end
 
-
-                --========================================
-                -- CHILLI HUB TITLE
-                --========================================
 
                 if IsChilliTitle(object) then
 
@@ -1985,24 +2137,12 @@ local function WatchRoot(root)
                 end
 
 
-                --========================================
-                -- OBJECT ใหม่
-                --
-                -- ลองแปลครั้งเดียว
-                -- ไม่มี Loop
-                --========================================
-
                 local changed =
                     ApplyTranslation(
                         object,
                         false
                     )
 
-
-                --========================================
-                -- ถ้าแปลสำเร็จ
-                -- ค่อย Watch Text ต่อ
-                --========================================
 
                 if changed then
 
@@ -2016,10 +2156,6 @@ local function WatchRoot(root)
 
                 end
 
-
-                --========================================
-                -- ANTI GUARD FLOATING
-                --========================================
 
                 if IsLooseTarget(object) then
 
@@ -2056,7 +2192,6 @@ end
 
 --========================================================
 -- 18. EXISTING LOOSE TARGETS
--- เช่น Anti Guard ที่สร้างก่อน Translator
 --========================================================
 
 local function TranslateExistingLooseTargets()
@@ -2065,27 +2200,26 @@ local function TranslateExistingLooseTargets()
         in ipairs(UI_ROOTS)
     do
 
-        local ok =
-            pcall(function()
+        pcall(function()
 
-                for _,object
-                    in ipairs(
-                        root:GetDescendants()
+            for _,object
+                in ipairs(
+                    root:GetDescendants()
+                )
+            do
+
+                if IsLooseTarget(object) then
+
+                    ApplyTranslation(
+                        object,
+                        true
                     )
-                do
-
-                    if IsLooseTarget(object) then
-
-                        ApplyTranslation(
-                            object,
-                            true
-                        )
-
-                    end
 
                 end
 
-            end)
+            end
+
+        end)
 
     end
 
@@ -2155,9 +2289,7 @@ local function FindExistingChilli()
 
 
         if found then
-
             return true
-
         end
 
     end
@@ -2170,14 +2302,10 @@ end
 
 --========================================================
 -- 20. INITIAL DISCOVERY
---
--- ทำไม่กี่ครั้งตอนเปิดเท่านั้น
--- ไม่ทำต่อเนื่องตลอดเกม
 --========================================================
 
 task.spawn(function()
 
-    -- ครั้งที่ 1
     task.wait(0.5)
 
     FindExistingChilli()
@@ -2195,7 +2323,6 @@ task.spawn(function()
     end
 
 
-    -- ครั้งที่ 2
     task.wait(1)
 
     FindExistingChilli()
@@ -2213,7 +2340,6 @@ task.spawn(function()
     end
 
 
-    -- ครั้งที่ 3
     task.wait(2)
 
     FindExistingChilli()
@@ -2225,8 +2351,6 @@ end)
 
 --========================================================
 -- 21. REFRESH GETHUI ONCE
---
--- บาง Executor สร้าง gethui ช้ากว่า
 --========================================================
 
 task.delay(
@@ -2320,7 +2444,11 @@ print(
 )
 
 print(
-    "✅ คำแปลเดิมครบ"
+    "✅ Butterfly Bloom Update"
+)
+
+print(
+    "✅ Essence / Trade Up / Wisp รองรับ"
 )
 
 print(
