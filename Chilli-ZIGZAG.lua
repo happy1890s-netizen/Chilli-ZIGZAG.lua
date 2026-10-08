@@ -1,7 +1,7 @@
 --========================================================
--- CHILLI HUB THAI - ZIGZAG V1.2
+-- CHILLI HUB THAI - ZIGZAG V1.3
 -- DIRECT SOURCE / ONE BLOCK / ANTI-FLICKER / LOW-LAG
--- V1.1 FULL TRANSLATIONS + UI LEFTOVERS (2026-10-08)
+-- V1.2 FULL TRANSLATIONS + INSTANT STEAL ZONES (2026-10-09)
 -- Keeps original translation engine and direct Chilli loader
 --========================================================
 
@@ -29,7 +29,7 @@ local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
 
 local SOURCE_URL = "https://raw.githubusercontent.com/tienkhanh1/spicy/main/Chilli.lua"
 
--- Full translations from ZIGZAG V1.1; new entries appended at the end
+-- Full translations from ZIGZAG V1.2; new entries appended at the end
 local TRANSLATIONS = {
     ["Chilli Hub"] = "Chilli Hub 🇹🇭 • ZIGZAG",
     ["Farm"] = "ฟาร์ม",
@@ -595,6 +595,18 @@ local TRANSLATIONS = {
     ["Auto Steal: ON"] = "ออโต้ขโมย: เปิด",
     ["Instant Steal: OFF"] = "ขโมยทันที: ปิด",
     ["Instant Steal: ON"] = "ขโมยทันที: เปิด",
+
+    -- V1.3: New Chilli Farm > Instant Steal Zones (2026-10-09)
+    ["Teleport To Egg"] = "วาร์ปไปหาไข่",
+    ["Teleport to Egg"] = "วาร์ปไปหาไข่",
+    ["Teleport To Eggs"] = "วาร์ปไปหาไข่",
+    ["Instant Steal Zones"] = "โซนขโมยทันที",
+    ["Instant Steal Zone"] = "โซนขโมยทันที",
+    ["Zones where Instant Steal V2 is used"] = "โซนที่ใช้ระบบขโมยทันที V2",
+    ["Prehistoric"] = "ยุคดึกดำบรรพ์",
+    ["Cherry Blossom"] = "ซากุระ",
+    ["Light Dark"] = "แสงและความมืด",
+    ["Titan Temple"] = "วิหารไททัน",
 }
 
 --========================================================
@@ -1111,16 +1123,17 @@ task.delay(2,function()
     pcall(function()
         StarterGui:SetCore("SendNotification",{
             Title="🌶️ Chilli ZIGZAG",
-            Text="V1.2 • แปลไทย / Low-Lag",
+            Text="V1.3 • แปลไทย / Low-Lag",
             Duration=4
         })
     end)
 end)
 print("==============================================")
-print("✅ CHILLI HUB THAI - ZIGZAG V1.2")
+print("✅ CHILLI HUB THAI - ZIGZAG V1.3")
 print("✅ DIRECT ORIGINAL CHILLI SOURCE")
 print("✅ LOADER + TRANSLATOR ONE BLOCK")
-print("✅ V1.1 TRANSLATIONS PRESERVED")
+print("✅ V1.2 TRANSLATIONS PRESERVED")
+print("✅ NEW INSTANT STEAL ZONES / TELEPORT TO EGG TRANSLATED")
 print("✅ FLOATING STEAL PANEL ON/OFF TRANSLATED")
 print("✅ DROP EGGS AT SAFE ZONE TRANSLATED")
 print("✅ OVER 100% MAY GLITCH TRANSLATED")
