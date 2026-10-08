@@ -1,8 +1,8 @@
 --========================================================
--- CHILLI HUB THAI - ZIGZAG V1.3
+-- CHILLI HUB THAI - ZIGZAG V1.6
 -- DIRECT SOURCE / ONE BLOCK / ANTI-FLICKER / LOW-LAG
--- V1.2 FULL TRANSLATIONS + INSTANT STEAL ZONES (2026-10-09)
--- Keeps original translation engine and direct Chilli loader
+-- V1.4 FULL ENGINE + V1.5 SOFT ZIGZAG WATERMARK / PURPLE OUTLINES (2026-10-09)
+-- Original translator/source preserved; visual theme never changes .Text
 --========================================================
 
 local ENV = (type(getgenv) == "function" and getgenv()) or _G
@@ -29,7 +29,7 @@ local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
 
 local SOURCE_URL = "https://raw.githubusercontent.com/tienkhanh1/spicy/main/Chilli.lua"
 
--- Full translations from ZIGZAG V1.2; new entries appended at the end
+-- Full translations from ZIGZAG V1.3; preserved without removing keys
 local TRANSLATIONS = {
     ["Chilli Hub"] = "Chilli Hub 🇹🇭 • ZIGZAG",
     ["Farm"] = "ฟาร์ม",
@@ -377,7 +377,7 @@ local TRANSLATIONS = {
     ["Skip Mutated Pets"] = "ข้ามสัตว์เลี้ยงกลายพันธุ์",
     ["Eject Incomplete Slots"] = "เอาสัตว์ที่จัดชุดไม่ได้ออก",
     ["Take out pets that can't make a set"] = "นำสัตว์เลี้ยงที่จัดเป็นชุดไม่ได้ออก",
-    ["Butterfly Bloom"] = "Butterfly Bloom",
+    ["Butterfly Bloom"] = "ผีเสื้อผลิบาน",
     ["Auto Butterfly Bloom"] = "ออโต้ Butterfly Bloom",
     ["Catch Mode"] = "โหมดจับผีเสื้อ",
     ["Stand"] = "ยืนรอ",
@@ -394,6 +394,7 @@ local TRANSLATIONS = {
     ["Amethyst Butterfly"] = "ผีเสื้อ Amethyst",
     ["Sapphire Butterfly"] = "ผีเสื้อ Sapphire",
     ["Emerald Butterfly"] = "ผีเสื้อ Emerald",
+    ["Wisp"] = "ภูตแสง (Wisp)",
     ["Wisp Companion"] = "คู่หู Wisp",
     ["Auto Wisp"] = "ออโต้ Wisp",
     ["Auto Wisp Quests"] = "ออโต้ภารกิจ Wisp",
@@ -806,13 +807,13 @@ local function TranslateText(text)
     end
     local bloomState,bloomLeft = clean:match("^(%a+)%s*|%s*Butterfly Bloom live,%s*(.-)%s+left$")
     if bloomState and (string.lower(bloomState) == "on" or string.lower(bloomState) == "off") then
-        local result = TranslateState(bloomState) .. " | Butterfly Bloom กำลังทำงาน เหลือ " .. bloomLeft
+        local result = TranslateState(bloomState) .. " | กิจกรรมผีเสื้อผลิบานกำลังทำงาน เหลือ " .. bloomLeft
         STRING_CACHE[text] = result
         return result
     end
     local bloomOnly = clean:match("^Butterfly Bloom live,%s*(.-)%s+left$")
     if bloomOnly then
-        local result = "Butterfly Bloom กำลังทำงาน เหลือ " .. bloomOnly
+        local result = "กิจกรรมผีเสื้อผลิบานกำลังทำงาน เหลือ " .. bloomOnly
         STRING_CACHE[text] = result
         return result
     end
@@ -969,6 +970,260 @@ local function FindChilliContainer(object)
     end
     return fallback
 end
+--========================================================
+-- ZIGZAG V1.6 PURPLE / BLACK THEME + FAINT WATERMARK (THAI ENGINE ISOLATED)
+-- Logo asset from ZIGZAG BF: rbxassetid://104570286698558
+-- Theme touches visual properties only; new watermark is very translucent.
+-- It NEVER modifies .Text / .PlaceholderText / translation caches.
+--========================================================
+
+local ZIGZAG_LOGO = "rbxassetid://104570286698558"
+local THEME_ORIGINAL = setmetatable({}, {__mode="k"})
+local THEME_STYLED = setmetatable({}, {__mode="k"})
+local THEME_LOGOS = {} -- header logo + faint background watermark, safely removed on rerun
+local WATERMARK_IMAGE_TRANSPARENCY = 0.90 -- 90% transparent: subtle ZIGZAG image
+
+local function IsRedAccent(color)
+    if typeof(color) ~= "Color3" then return false end
+    local r,g,b = color.R,color.G,color.B
+    -- Saturated red/pink accent only; green toggles and white text are untouched.
+    return r >= 0.43 and r > g * 1.37 and r > b * 1.28
+        and (r - math.max(g,b)) > 0.19
+end
+
+local function PurpleFromRed(color)
+    local _,s,v = Color3.toHSV(color)
+    return Color3.fromHSV(0.765, math.clamp(s*0.93,0.48,0.94), math.clamp(v*0.96,0.30,1))
+end
+
+local function SaveStyle(object,property,newValue)
+    local orig = THEME_ORIGINAL[object]
+    if not orig then
+        orig = {}
+        THEME_ORIGINAL[object] = orig
+    end
+    if orig[property] == nil then
+        local ok,value = pcall(function() return object[property] end)
+        if not ok then return end
+        orig[property] = value
+    end
+    pcall(function() object[property] = newValue end)
+end
+
+local function IsLargeThemeSurface(object)
+    if not object or not object:IsA("GuiObject") then return false end
+    local ok,w,h = pcall(function()
+        local size = object.AbsoluteSize
+        return size.X,size.Y
+    end)
+    if not ok then return false end
+    -- Ignore small status indicators, red warning icons and X close buttons.
+    if w < 85 and h < 28 then
+        local sx = object.Size
+        if sx.X.Offset < 85 and sx.X.Scale < 0.18 then return false end
+    end
+    return w >= 85 or (object.Size.X.Offset >= 85)
+        or (object.Size.X.Scale >= 0.18 and h >= 27)
+end
+
+local function ThemeObject(object)
+    if not object or not object.Parent or THEME_STYLED[object] then return end
+    if object.Name == "ZIGZAG_ThemeLogo_V14"
+        or object.Name == "ZIGZAG_BackgroundWatermark_V15" then return end
+
+    -- Border strokes on tabs and large buttons stayed red in V1.4.
+    if object:IsA("UIStroke") then
+        local parent = object.Parent
+        if parent and parent:IsA("GuiObject") and IsLargeThemeSurface(parent) then
+            local ok,strokeColor = pcall(function() return object.Color end)
+            if ok and IsRedAccent(strokeColor) then
+                SaveStyle(object,"Color",PurpleFromRed(strokeColor))
+                THEME_STYLED[object] = true
+            end
+        end
+        return
+    end
+
+    if object:IsA("UIGradient") then
+        local parent = object.Parent
+        if parent and parent:IsA("UIStroke") then parent = parent.Parent end
+        if not IsLargeThemeSurface(parent) then return end
+        local original = object.Color
+        local points,changed = {},false
+        for _,pt in ipairs(original.Keypoints) do
+            local color = pt.Value
+            if IsRedAccent(color) then
+                color = PurpleFromRed(color)
+                changed = true
+            end
+            table.insert(points,ColorSequenceKeypoint.new(pt.Time,color))
+        end
+        if changed then
+            SaveStyle(object,"Color",ColorSequence.new(points))
+            THEME_STYLED[object] = true
+        end
+        return
+    end
+
+    if not object:IsA("GuiObject") or not IsLargeThemeSurface(object) then return end
+    if not (object:IsA("Frame") or object:IsA("TextButton")
+        or object:IsA("ImageButton") or object:IsA("ScrollingFrame")
+        or object:IsA("TextLabel") or object:IsA("ImageLabel")) then return end
+
+    local changed = false
+    -- Some Chilli borders are actual BorderColor3, not separate objects.
+    local okBorder,border = pcall(function() return object.BorderColor3 end)
+    if okBorder and IsRedAccent(border) then
+        SaveStyle(object,"BorderColor3",PurpleFromRed(border))
+        changed = true
+    end
+    local ok,bg = pcall(function() return object.BackgroundColor3 end)
+    if ok and IsRedAccent(bg) then
+        SaveStyle(object,"BackgroundColor3",PurpleFromRed(bg))
+        changed = true
+    end
+
+    -- Subtle dark-violet panels: retain original opacity, text and all green toggles.
+    if not changed and (object:IsA("Frame") or object:IsA("ScrollingFrame")) then
+        local opacityOk,transparency = pcall(function() return object.BackgroundTransparency end)
+        if ok and opacityOk and transparency < 0.65 then
+            local r,g,b = bg.R,bg.G,bg.B
+            local w,h = object.AbsoluteSize.X,object.AbsoluteSize.Y
+            local nearGray = math.abs(r-g) < 0.07 and math.abs(r-b) < 0.07
+            if nearGray and r < 0.19 and w >= 180 and h >= 65 then
+                SaveStyle(object,"BackgroundColor3",Color3.fromRGB(20,12,31))
+                changed = true
+            end
+        end
+    end
+
+    if changed then THEME_STYLED[object] = true end
+end
+
+local function PlaceZigzagLogo(title)
+    if not title or not title.Parent then return end
+    if not IsChilliTitle(title) then return end
+    local host = title.Parent
+    if not host:IsA("GuiObject") or host.AbsoluteSize.Y > 145 then
+        host = title
+    end
+    if not host:IsA("GuiObject") then return end
+    local existing = host:FindFirstChild("ZIGZAG_ThemeLogo_V14")
+    if existing then return end
+    local icon = Instance.new("ImageLabel")
+    icon.Name = "ZIGZAG_ThemeLogo_V14"
+    icon.BackgroundTransparency = 1
+    icon.Active = false
+    icon.Selectable = false
+    icon.ScaleType = Enum.ScaleType.Fit
+    icon.Image = ZIGZAG_LOGO
+    icon.ImageTransparency = 0.02
+    icon.AnchorPoint = Vector2.new(0,0.5)
+    icon.Position = UDim2.new(0,12,0.5,0)
+    icon.Size = UDim2.new(0,54,0,54)
+    icon.ZIndex = title.ZIndex + 1
+    icon.Parent = host
+    table.insert(THEME_LOGOS,icon)
+end
+
+--========================================================
+-- V1.5: ONE VERY FAINT ZIGZAG LOGO BEHIND MAIN CONTENT.
+-- Adds no translation listeners and NEVER sets Text / PlaceholderText.
+-- Does not change green switches or the game's background.
+--========================================================
+local function PlaceZigzagWatermark(gui)
+    if not gui or not gui.Parent then return end
+    if gui:FindFirstChild("ZIGZAG_BackgroundWatermark_V15",true) then return end
+
+    local title
+    for _,item in ipairs(gui:GetDescendants()) do
+        if IsChilliTitle(item) then title = item break end
+    end
+    if not title then return end
+
+    -- V1.6: use visible geometry; V1.5 rejected the real content panel
+    -- when it had layout children, and its image ZIndex was below the panel.
+    local titlePos = title.AbsolutePosition
+    local titleSize = title.AbsoluteSize
+    local titleBottom = titlePos.Y + titleSize.Y
+    local titleMid = titlePos.X + titleSize.X/2
+    local best,scoreBest = nil,-math.huge
+    for _,item in ipairs(gui:GetDescendants()) do
+        if item:IsA("Frame") or item:IsA("ScrollingFrame") or item:IsA("CanvasGroup") then
+            local p,s = item.AbsolutePosition,item.AbsoluteSize
+            local mid = p.X+s.X/2
+            local score = s.X*s.Y/10000 - math.abs(mid-titleMid)*0.12
+                - math.abs(p.Y-titleBottom)*0.09
+            if s.X>=300 and s.Y>=220 and p.Y>=titlePos.Y-25
+                and p.Y<titleBottom+155 and p.Y+s.Y>titleBottom+180
+                and math.abs(mid-titleMid)<s.X*0.42
+                and score>scoreBest then
+                best,scoreBest=item,score
+            end
+        end
+    end
+    if not best then
+        warn("[ZIGZAG] V1.6: content panel not found, skipping watermark")
+        return
+    end
+
+    -- Put the watermark ABOVE the panel's painted background.
+    -- Keep labels, buttons, toggles and input controls ABOVE the image.
+    local markZ = math.max(2,best.ZIndex+1)
+    local mark = Instance.new("ImageLabel")
+    mark.Name = "ZIGZAG_BackgroundWatermark_V15"
+    mark.BackgroundTransparency = 1
+    mark.BorderSizePixel = 0
+    mark.Active = false
+    mark.Selectable = false
+    mark.Image = ZIGZAG_LOGO
+    mark.ImageTransparency = 0.87
+    mark.ImageColor3 = Color3.fromRGB(204,175,245)
+    mark.ScaleType = Enum.ScaleType.Fit
+    mark.AnchorPoint = Vector2.new(0.5,0.5)
+    mark.Position = UDim2.fromScale(0.5,0.52)
+    mark.Size = UDim2.fromScale(0.60,0.70)
+    mark.ZIndex = markZ
+    mark.Parent = best
+    table.insert(THEME_LOGOS,mark)
+
+    -- Ensure all existing controls remain in front, without touching text.
+    for _,child in ipairs(best:GetDescendants()) do
+        if child ~= mark and child:IsA("GuiObject")
+            and not child:IsDescendantOf(mark) and child.ZIndex <= markZ then
+            SaveStyle(child,"ZIndex",markZ+1)
+        end
+    end
+    -- Darken the panel slightly so the watermark stays subtle.
+    pcall(function()
+        SaveStyle(best,"BackgroundColor3",Color3.fromRGB(19,12,31))
+        if best.BackgroundTransparency>0.48 then
+            SaveStyle(best,"BackgroundTransparency",0.48)
+        end
+    end)
+    print("✅ ZIGZAG V1.6 watermark placed above panel, below controls")
+end
+
+local function RestoreZigzagTheme()
+    for object,props in pairs(THEME_ORIGINAL) do
+        for property,original in pairs(props) do
+            pcall(function() object[property] = original end)
+        end
+    end
+    for _,icon in ipairs(THEME_LOGOS) do
+        pcall(function() icon:Destroy() end)
+    end
+    table.clear(THEME_LOGOS)
+end
+
+-- Theme and watermark clean up automatically when rerun in the same session.
+STATE.RestoreTheme = RestoreZigzagTheme
+local DisconnectTranslations = STATE.Disconnect
+function STATE.Disconnect()
+    RestoreZigzagTheme()
+    DisconnectTranslations()
+end
+
 local MainChilliGui = nil
 local ChilliConnections = {}
 local function DisconnectChilli()
@@ -992,10 +1247,37 @@ local function TrackChilli(gui)
     MainChilliGui = gui
     for _,object in ipairs(gui:GetDescendants()) do
         ApplyTranslation(object,true)
+        ThemeObject(object)
+        if IsChilliTitle(object) then PlaceZigzagLogo(object) end
     end
     BindChilli(gui.DescendantAdded:Connect(function(object)
-        if IsTextObject(object) then ApplyTranslation(object,true) end
+        if IsTextObject(object) then
+            ApplyTranslation(object,true)
+            if IsChilliTitle(object) then PlaceZigzagLogo(object) end
+        end
+        ThemeObject(object)
     end))
+    -- Delayed placement allows Chilli's main center panel to finish sizing.
+    task.delay(0.85,function()
+        if MainChilliGui == gui and gui.Parent then PlaceZigzagWatermark(gui) end
+    end)
+    -- Two lightweight one-time passes to catch UI gradients initialized late.
+    -- No RenderStepped, Heartbeat, or permanent scanning.
+    task.delay(0.7,function()
+        if MainChilliGui ~= gui or not gui.Parent then return end
+        for _,object in ipairs(gui:GetDescendants()) do
+            ThemeObject(object)
+            if IsChilliTitle(object) then PlaceZigzagLogo(object) end
+        end
+        PlaceZigzagWatermark(gui)
+    end)
+    task.delay(2.0,function()
+        if MainChilliGui ~= gui or not gui.Parent then return end
+        for _,object in ipairs(gui:GetDescendants()) do
+            ThemeObject(object)
+        end
+        PlaceZigzagWatermark(gui)
+    end)
     BindChilli(gui.AncestryChanged:Connect(function()
         if not gui.Parent then DisconnectChilli() end
     end))
@@ -1123,19 +1405,20 @@ task.delay(2,function()
     pcall(function()
         StarterGui:SetCore("SendNotification",{
             Title="🌶️ Chilli ZIGZAG",
-            Text="V1.3 • แปลไทย / Low-Lag",
+            Text="V1.6 • แปลไทย + ธีมม่วง + พื้นหลัง ZIGZAG แบบจาง",
             Duration=4
         })
     end)
 end)
 print("==============================================")
-print("✅ CHILLI HUB THAI - ZIGZAG V1.3")
+print("✅ CHILLI HUB THAI - ZIGZAG V1.6")
 print("✅ DIRECT ORIGINAL CHILLI SOURCE")
 print("✅ LOADER + TRANSLATOR ONE BLOCK")
-print("✅ V1.2 TRANSLATIONS PRESERVED")
+print("✅ ALL V1.4 TRANSLATIONS PRESERVED + BUTTERFLY BLOOM / WISP")
 print("✅ NEW INSTANT STEAL ZONES / TELEPORT TO EGG TRANSLATED")
 print("✅ FLOATING STEAL PANEL ON/OFF TRANSLATED")
 print("✅ DROP EGGS AT SAFE ZONE TRANSLATED")
 print("✅ OVER 100% MAY GLITCH TRANSLATED")
-print("✅ NO RENDERSTEPPED / NO PERMANENT FULL SCAN")
+print("✅ PURPLE-BLACK THEME + PURPLE STROKES + FAINT ZIGZAG WATERMARK")
+print("✅ NO TEXT OVERRIDES FROM THEME / NO PERMANENT FULL SCAN")
 print("==============================================")
