@@ -1,5 +1,5 @@
 --========================================================
--- CHILLI HUB THAI - ZIGZAG V1.6 DR-FIX 2
+-- CHILLI HUB THAI - ZIGZAG V1.6 DR-FIX 3
 -- DIRECT SOURCE / ONE BLOCK / ANTI-FLICKER / LOW-LAG
 -- V1.6 BASE / DR. SCRAMBLE SCROLL GUARD / DYNAMIC PURPLE BORDERS (2026-10-09)
 -- Original translator/source preserved; visual theme never changes .Text
@@ -153,6 +153,7 @@ local TRANSLATIONS = {
     ["Hit Aura"] = "ตีรอบตัว",
     ["Hit Tween Speed"] = "ความเร็ววาร์ปตอนตี",
     ["Hit Max Speed"] = "ความเร็วสูงสุดตอนตี",
+    ["Chase Settings"] = "ตั้งค่าการไล่ตาม",
     ["Hit Lead"] = "ระยะนำเป้าหมาย",
     ["Stand further ahead of the target (+) or closer to them (-)"] = "ยืนล้ำหน้าเป้าหมาย (+) หรือเข้าใกล้เป้าหมาย (-)",
     ["Hit Sweep"] = "ระยะกวาดตอนตี",
@@ -1574,13 +1575,13 @@ task.delay(2,function()
     pcall(function()
         StarterGui:SetCore("SendNotification",{
             Title="🌶️ Chilli ZIGZAG",
-            Text="V1.6 DR-FIX 2 • ",
+            Text="V1.6 DR-FIX 3 ",
             Duration=4
         })
     end)
 end)
 print("==============================================")
-print("✅ CHILLI HUB THAI - ZIGZAG V1.6 DR-FIX 2")
+print("✅ CHILLI HUB THAI - ZIGZAG V1.6 DR-FIX 3")
 print("✅ DIRECT ORIGINAL CHILLI SOURCE")
 print("✅ LOADER + TRANSLATOR ONE BLOCK")
 print("✅ ALL V1.4 TRANSLATIONS PRESERVED + BUTTERFLY BLOOM / WISP")
@@ -1588,6 +1589,7 @@ print("✅ NEW INSTANT STEAL ZONES / TELEPORT TO EGG TRANSLATED")
 print("✅ FLOATING STEAL PANEL ON/OFF TRANSLATED")
 print("✅ DROP EGGS AT SAFE ZONE TRANSLATED")
 print("✅ OVER 100% MAY GLITCH TRANSLATED")
+print("✅ CHASE SETTINGS TRANSLATED")
 print("✅ DYNAMIC PURPLE BORDERS + SAFE UI ZORDER + DR SCROLL GUARD")
 print("✅ PROPERTY EVENT WATCHERS RESTORE PURPLE AFTER CHILLI RECOLORS")
 print("✅ NO TEXT OVERRIDES FROM THEME / NO PERMANENT FULL SCAN")
