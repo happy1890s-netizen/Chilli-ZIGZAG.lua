@@ -1,5 +1,5 @@
 --========================================================
--- CHILLI HUB THAI - ZIGZAG V1.7 RACE + MUTATION FULL MERGED
+-- CHILLI HUB THAI - ZIGZAG V1.7.1 ADMIN ABUSE FULL MERGED
 -- DIRECT SOURCE / ONE BLOCK / ANTI-FLICKER / LOW-LAG
 -- V1.6 BASE / DR. SCRAMBLE SCROLL GUARD / DYNAMIC PURPLE BORDERS (2026-10-09)
 -- Original translator/source preserved; visual theme never changes .Text
@@ -676,6 +676,36 @@ local ZIGZAG_V17_TRANSLATIONS = {
 for english,thai in pairs(ZIGZAG_V17_TRANSLATIONS) do
     if TRANSLATIONS[english] == nil then
         TRANSLATIONS[english] = thai
+    end
+end
+
+--========================================================
+-- V1.7.1: ADMIN ABUSE TRANSLATIONS (ADD-ONLY)
+-- Uses original cache/translator; zero new watchers or scans.
+--========================================================
+local ZIGZAG_V171_ADMIN_TRANSLATIONS = {
+    ["Admin Abuse"] = "กิจกรรมแอดมิน",
+    ["Admin Abuse Tab"] = "แท็บกิจกรรมแอดมิน",
+    ["Capture The Egg"] = "จับไข่กิจกรรม",
+    ["Capture the Egg"] = "จับไข่กิจกรรม",
+    ["Auto Capture Event Egg"] = "ออโต้จับไข่กิจกรรม",
+    ["Take It From The Holder"] = "แย่งไข่จากผู้ที่กำลังถือ",
+    ["Hold Height"] = "ความสูงขณะถือไข่",
+    ["Keep Away Distance"] = "ระยะเว้นห่างจากผู้อื่น",
+    ["Admin Treadmill"] = "ลู่วิ่งแอดมิน",
+    ["Auto Use Admin Treadmill"] = "ออโต้ใช้ลู่วิ่งแอดมิน",
+    ["Instant Steal V3"] = "ขโมยทันที V3",
+    ["Minigame Eggs"] = "ไข่มินิเกม",
+    ["Minigame Egg"] = "ไข่มินิเกม",
+    ["Auto Steal Minigame Egg"] = "ออโต้ขโมยไข่มินิเกม",
+    ["Admin Abuse Tab > Capture The Egg"] = "แท็บกิจกรรมแอดมิน > จับไข่กิจกรรม",
+    ["Admin Abuse Tab > Admin Treadmill"] = "แท็บกิจกรรมแอดมิน > ลู่วิ่งแอดมิน",
+    ["Admin Abuse Tab > Instant Steal V3"] = "แท็บกิจกรรมแอดมิน > ขโมยทันที V3",
+    ["Admin Abuse Tab > Minigame Eggs"] = "แท็บกิจกรรมแอดมิน > ไข่มินิเกม",
+}
+for en,th in pairs(ZIGZAG_V171_ADMIN_TRANSLATIONS) do
+    if TRANSLATIONS[en] == nil then
+        TRANSLATIONS[en] = th
     end
 end
 
@@ -1657,7 +1687,7 @@ task.delay(2,function()
     pcall(function()
         StarterGui:SetCore("SendNotification",{
             Title="🌶️ Chilli ZIGZAG",
-            Text="V1.7 | Race + Shooting Star + Mutation",
+            Text="V1.7.1 | Admin Abuse ไทยเพิ่มเติม",
             Duration=4
         })
     end)
@@ -1676,5 +1706,6 @@ print("✅ DYNAMIC PURPLE BORDERS + SAFE UI ZORDER + DR SCROLL GUARD")
 print("✅ PROPERTY EVENT WATCHERS RESTORE PURPLE AFTER CHILLI RECOLORS")
 print("✅ V1.7 RACING EVENT / SHOOTING STAR / AUTO MUTATION")
 print("✅ V1.7 QUICK BAR NEW LABELS / RACE COUNTDOWN")
+print("✅ V1.7.1 ADMIN ABUSE / CAPTURE / MINIGAME TRANSLATIONS")
 print("✅ NO TEXT OVERRIDES FROM THEME / NO PERMANENT FULL SCAN")
 print("==============================================")
