@@ -1,5 +1,5 @@
 --========================================================
--- CHILLI HUB THAI - ZIGZAG V1.6 DR-FIX 3
+-- CHILLI HUB THAI - ZIGZAG V1.7 RACE + MUTATION FULL MERGED
 -- DIRECT SOURCE / ONE BLOCK / ANTI-FLICKER / LOW-LAG
 -- V1.6 BASE / DR. SCRAMBLE SCROLL GUARD / DYNAMIC PURPLE BORDERS (2026-10-09)
 -- Original translator/source preserved; visual theme never changes .Text
@@ -612,6 +612,74 @@ local TRANSLATIONS = {
 }
 
 --========================================================
+-- V1.7 ADD-ONLY TRANSLATIONS: CHILLI RACE / SHOOTING STAR
+-- / AUTO MUTATION / QUICK-BAR LABELS (2026-10-11)
+-- Preserves all existing V1.6 DR-FIX 3 mappings.
+-- No hooks, layout changes or additional scanning.
+--========================================================
+
+local ZIGZAG_V17_TRANSLATIONS = {
+    ["Racing Event"] = "กิจกรรมแข่งวิ่ง",
+    ["Auto Race"] = "ออโต้แข่งวิ่ง",
+    ["Race Speed"] = "ความเร็วในการแข่งขัน",
+    ["Auto Use Power-Ups"] = "ออโต้ใช้ไอเทมเพิ่มพลัง",
+    ["Auto Claim Race Rewards"] = "ออโต้รับรางวัลการแข่งขัน",
+    ["Auto Equip Racer"] = "ออโต้เลือกพาหนะแข่ง",
+    ["Racer"] = "พาหนะแข่ง",
+    ["Best Owned"] = "ตัวที่ดีที่สุดที่มี",
+    ["Ostrich"] = "นกกระจอกเทศ",
+    ["Auto Buy Race Shop"] = "ออโต้ซื้อของจากร้านการแข่งขัน",
+    ["Race Shop Items"] = "ไอเทมในร้านการแข่งขัน",
+    ["Nitro Mutation"] = "การกลายพันธุ์ไนโตร",
+    ["Cash Booster"] = "ตัวเพิ่มรายได้",
+    ["Treadmill Boost"] = "บูสต์ลู่วิ่ง",
+    ["Racing Bat"] = "ไม้ตีการแข่งขัน",
+    ["Shooting Star"] = "ดาวตก",
+    ["Shooting Stars"] = "ดาวตก",
+    ["Waiting for a shooting star"] = "กำลังรอดาวตก",
+    ["Waiting for a shooting star."] = "กำลังรอดาวตก",
+    ["Waiting for a shooting star..."] = "กำลังรอดาวตก",
+    ["Auto Catch Shooting Star"] = "ออโต้เก็บดาวตก",
+    ["Auto Catch Shooting Stars"] = "ออโต้เก็บดาวตก",
+    ["Auto Mutation"] = "ออโต้กลายพันธุ์",
+    ["Auto Mutate"] = "ออโต้กลายพันธุ์",
+    ["Mutations To Use"] = "การกลายพันธุ์ที่ต้องการใช้",
+    ["Fractured"] = "แตกสลาย",
+    ["Scrambled"] = "สแครมเบิล",
+    ["Enchanted"] = "มนตรา",
+    ["Nitro"] = "ไนโตร",
+    ["Auto Buy Nitro"] = "ออโต้ซื้อไนโตร",
+    ["Buy Nitro from the Racing Event shop as soon as you run out"] = "ซื้อไนโตรจากร้านกิจกรรมแข่งวิ่งทันทีเมื่อไนโตรหมด",
+    ["Mutate Min Rarity"] = "ความหายากขั้นต่ำสำหรับการกลายพันธุ์",
+    ["Only eggs of this rarity and above get mutated"] = "กลายพันธุ์เฉพาะไข่ระดับนี้ขึ้นไป",
+    ["Mutate Min Value"] = "มูลค่าขั้นต่ำสำหรับการกลายพันธุ์",
+    ["Skip eggs worth less than this (0 = off)"] = "ข้ามไข่ที่มูลค่าต่ำกว่าที่กำหนด (0 = ปิด)",
+    ["Mutate Target Eggs"] = "ไข่เป้าหมายสำหรับการกลายพันธุ์",
+    ["Only mutate these eggs (empty = all)"] = "กลายพันธุ์เฉพาะไข่ที่เลือก (เว้นว่าง = ทั้งหมด)",
+    ["Mutate Priority"] = "ลำดับความสำคัญการกลายพันธุ์",
+    ["Which egg gets mutated first"] = "เลือกไข่ที่จะกลายพันธุ์ก่อน",
+    ["Keep Mutated Eggs"] = "เก็บไข่ที่กลายพันธุ์ไว้",
+    ["Min Hatch Value"] = "มูลค่าขั้นต่ำในการฟักไข่",
+    ["Farm Tab > Racing Event"] = "แท็บฟาร์ม > กิจกรรมแข่งวิ่ง",
+    ["Farm Tab > Shooting Star"] = "แท็บฟาร์ม > ดาวตก",
+    ["Farm Tab > Butterfly Bloom"] = "แท็บฟาร์ม > ผีเสื้อผลิบาน",
+    ["Farm Tab > Auto Mutation"] = "แท็บฟาร์ม > ออโต้กลายพันธุ์",
+    ["Farm Tab > Auto Fuse Machine"] = "แท็บฟาร์ม > ออโต้เครื่องผสมสัตว์",
+    ["Farm Tab > Auto Sell Pet"] = "แท็บฟาร์ม > ออโต้ขายสัตว์เลี้ยง",
+    ["Farm Tab > Auto Sell Egg"] = "แท็บฟาร์ม > ออโต้ขายไข่",
+    ["Farm Tab > Auto Buy Race Shop"] = "แท็บฟาร์ม > ออโต้ซื้อของร้านการแข่งขัน",
+    ["Next Racing Event in"] = "กิจกรรมแข่งวิ่งครั้งถัดไปใน",
+    ["Race Rewards"] = "รางวัลการแข่งขัน",
+    ["Race Shop"] = "ร้านการแข่งขัน",
+}
+
+for english,thai in pairs(ZIGZAG_V17_TRANSLATIONS) do
+    if TRANSLATIONS[english] == nil then
+        TRANSLATIONS[english] = thai
+    end
+end
+
+--========================================================
 -- 4. LOOKUP / CACHE  (V1.1 engine preserved)
 --========================================================
 
@@ -666,6 +734,20 @@ local function TranslateText(text)
     if exact then
         STRING_CACHE[text] = exact
         return exact
+    end
+
+    -- V1.7: Dynamic race countdown (example: Off | Next Racing Event in 17:12)
+    -- Exact race labels are mapped above; the rest of the translator is untouched.
+    local raceState,raceCountdown =
+        clean:match("^(%a+)%s*|%s*Next Racing Event in%s*(.+)$")
+    if raceState and raceCountdown then
+        local stateLower = string.lower(raceState)
+        if stateLower == "off" or stateLower == "on" then
+            local result = TranslateState(stateLower)
+                .. " | กิจกรรมแข่งวิ่งครั้งถัดไปใน " .. raceCountdown
+            STRING_CACHE[text] = result
+            return result
+        end
     end
 
     local rarityNumber,rarityName = clean:match("^(%d+)%s*%-%s*(.-)%s*$")
@@ -1575,13 +1657,13 @@ task.delay(2,function()
     pcall(function()
         StarterGui:SetCore("SendNotification",{
             Title="🌶️ Chilli ZIGZAG",
-            Text="V1.6 DR-FIX 3 ",
+            Text="V1.7 | Race + Shooting Star + Mutation",
             Duration=4
         })
     end)
 end)
 print("==============================================")
-print("✅ CHILLI HUB THAI - ZIGZAG V1.6 DR-FIX 3")
+print("✅ CHILLI HUB THAI - ZIGZAG V1.7 RACE / MUTATION FULL MERGED")
 print("✅ DIRECT ORIGINAL CHILLI SOURCE")
 print("✅ LOADER + TRANSLATOR ONE BLOCK")
 print("✅ ALL V1.4 TRANSLATIONS PRESERVED + BUTTERFLY BLOOM / WISP")
@@ -1592,5 +1674,7 @@ print("✅ OVER 100% MAY GLITCH TRANSLATED")
 print("✅ CHASE SETTINGS TRANSLATED")
 print("✅ DYNAMIC PURPLE BORDERS + SAFE UI ZORDER + DR SCROLL GUARD")
 print("✅ PROPERTY EVENT WATCHERS RESTORE PURPLE AFTER CHILLI RECOLORS")
+print("✅ V1.7 RACING EVENT / SHOOTING STAR / AUTO MUTATION")
+print("✅ V1.7 QUICK BAR NEW LABELS / RACE COUNTDOWN")
 print("✅ NO TEXT OVERRIDES FROM THEME / NO PERMANENT FULL SCAN")
 print("==============================================")
